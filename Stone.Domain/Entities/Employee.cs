@@ -18,7 +18,7 @@ namespace Stone.Domain.Entities
 
         public string Setor { get; set; }
 
-        public long SalarioBruto { get; set; }
+        public decimal SalarioBruto { get; set; }
 
         public DateTime Admissao { get; set; }
 
