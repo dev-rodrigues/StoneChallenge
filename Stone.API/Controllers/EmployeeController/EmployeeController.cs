@@ -4,18 +4,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Stone.Domain.Entities;
 
-namespace Stone.API.Controllers.Employee
+namespace Stone.API.Controllers.EmployeeController
 {
     [Route("api/[controller]")]
     [ApiController]
     public class EmployeeController : ControllerBase
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+
+        [HttpPost]
+        public IActionResult Store(Employee employee)
         {
-            return new string[] { "value1", "value2" };
+
+            return BadRequest("");
         }
     }
 }
