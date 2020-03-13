@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.1062
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stone.Infrastructure", "Stone.Infrastructure\Stone.Infrastructure.csproj", "{658A2A67-CF2A-4C86-A364-6A63AB419CDA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", "{162D912B-D5F2-49BF-A3FF-B9D83FE3DD0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stone.Domain", "Stone.Domain\Stone.Domain.csproj", "{FCE5C266-0D36-4993-9EFD-432D30B8F694}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{658A2A67-CF2A-4C86-A364-6A63AB419CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{658A2A67-CF2A-4C86-A364-6A63AB419CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{658A2A67-CF2A-4C86-A364-6A63AB419CDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCE5C266-0D36-4993-9EFD-432D30B8F694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCE5C266-0D36-4993-9EFD-432D30B8F694}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCE5C266-0D36-4993-9EFD-432D30B8F694}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCE5C266-0D36-4993-9EFD-432D30B8F694}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FCE5C266-0D36-4993-9EFD-432D30B8F694} = {162D912B-D5F2-49BF-A3FF-B9D83FE3DD0F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0AE43ED6-AC6C-410B-80B6-3970FA613049}
