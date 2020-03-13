@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Stone.Domain.Aggregations
 {
-    class Class1
+    class Class3
     {
     }
 }
