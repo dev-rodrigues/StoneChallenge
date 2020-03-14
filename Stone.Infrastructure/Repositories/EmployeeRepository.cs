@@ -17,24 +17,24 @@ namespace Stone.Infrastructure.Repositories
             _db = new EFDataContext();
         }
 
-        public bool Create(Employee entity)
-        {
-            var retorno = false;
+        public Employee Create(Employee entity)
+        {            
             try
             {
                 _db.Add(entity);
                 _db.SaveChanges();
-                retorno = true;
+                return entity;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-            return retorno;
+            return null;
         }
 
         public Employee Read(int id)
         {
+            Console.WriteLine("---");
             return _db.Employees.Find(id);
         }
     }

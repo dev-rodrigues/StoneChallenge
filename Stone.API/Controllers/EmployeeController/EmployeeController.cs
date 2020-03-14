@@ -19,7 +19,7 @@ namespace Stone.API.Controllers.EmployeeController
         private readonly EmployeeService employeeService = new EmployeeService();
         
         [HttpGet]
-        public IActionResult Index(int employeeId)
+        public IActionResult Show(int employeeId)
         {            
             return Ok(employeeService.GetEmployeeById(employeeId));
         }
@@ -30,8 +30,8 @@ namespace Stone.API.Controllers.EmployeeController
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Store(Employee employee)
         {
-            employeeService.AddEmployee(employee);
-            return Ok();
+            var saved_employee = employeeService.AddEmployee(employee);
+            return CreatedAtAction(nameof(Show), new { employeeId = saved_employee.Id }, saved_employee);
         }
 
     }

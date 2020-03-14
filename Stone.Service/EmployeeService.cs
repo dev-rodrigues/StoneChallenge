@@ -16,13 +16,15 @@ namespace Stone.Service
         {            
         }
 
-        public void AddEmployee(Employee employee)
+        public Employee AddEmployee(Employee employee)
         {
-            _service.Create(employee);
+            Console.WriteLine("---");
+            return _service.Create(employee);
         }
 
         public Employee GetEmployeeById(int id)
         {
+            Console.WriteLine("---");
             return _service.Read(id);
         }
     }
