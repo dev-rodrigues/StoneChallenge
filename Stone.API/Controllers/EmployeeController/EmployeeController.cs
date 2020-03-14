@@ -18,9 +18,9 @@ namespace Stone.API.Controllers.EmployeeController
         private readonly EmployeeService employeeService = new EmployeeService();
         
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(int employeeId)
         {            
-            return Ok(employeeService.GetEmployeeById(1));
+            return Ok(employeeService.GetEmployeeById(employeeId));
         }
 
         [HttpPost]
