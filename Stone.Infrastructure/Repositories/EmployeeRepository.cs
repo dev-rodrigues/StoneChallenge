@@ -14,7 +14,7 @@ namespace Stone.Infrastructure.Repositories
 
         public EmployeeRepository()
         {
-            _db = new EFDataContext();    
+            _db = new EFDataContext();
         }
 
         public bool Create(Employee entity)
@@ -22,12 +22,13 @@ namespace Stone.Infrastructure.Repositories
             var retorno = false;
             try
             {
-                //_db.Add(entity);
+                _db.Add(entity);
+                _db.SaveChanges();
                 retorno = true;
             }
             catch (Exception e)
             {
-                // faz alguma coisa
+                Console.WriteLine(e.Message);
             }
             return retorno;
         }

@@ -4,6 +4,7 @@ using Stone.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Stone.Service
 {
@@ -17,7 +18,7 @@ namespace Stone.Service
 
         public void AddEmployee(Employee employee)
         {
-            //_employeeRepository.Create(employee);
+            _service.Create(employee);
         }
 
         public Employee GetEmployeeById(int id)
