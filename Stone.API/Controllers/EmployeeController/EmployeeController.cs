@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Stone.Domain.Entities;
+using Stone.Domain.Interface.Repositories;
+using Stone.Service;
 
 namespace Stone.API.Controllers.EmployeeController
 {
@@ -13,22 +15,12 @@ namespace Stone.API.Controllers.EmployeeController
     public class EmployeeController : ControllerBase
     {
 
+        private readonly EmployeeService employeeService = new EmployeeService();
+        
         [HttpGet]
         public IActionResult Index()
-        {
-            var retorno = new Employee() {
-                Id = 1,
-                Nome = "Carlos Henrique",
-                SobreNome = "Junior",
-                Cpf = "148.974.627-70",
-                Setor = "TI",
-                SalarioBruto = 946,
-                Admissao = new DateTime(),
-                PlanoDental = false,
-                PlanoSaude = false,
-                ValeTransporte = false                
-            };
-            return Ok(retorno);
+        {            
+            return Ok(employeeService.GetEmployeeById(1));
         }
 
         [HttpPost]

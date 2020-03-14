@@ -12,14 +12,24 @@ namespace Stone.Infrastructure.Repositories
 
         private readonly EFDataContext _db;
 
-        public EmployeeRepository(EFDataContext db)
+        public EmployeeRepository()
         {
-            _db = db;
+            _db = new EFDataContext();    
         }
 
-        public void Create(Employee entity)
+        public bool Create(Employee entity)
         {
-            _db.Add(entity);
+            var retorno = false;
+            try
+            {
+                //_db.Add(entity);
+                retorno = true;
+            }
+            catch (Exception e)
+            {
+                // faz alguma coisa
+            }
+            return retorno;
         }
 
         public Employee Read(int id)

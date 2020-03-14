@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Service\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -14,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Stone.Domain\Stone.Domain.csproj" />
+    <ProjectReference Include="..\Stone.Service\Stone.Service.csproj" />
   </ItemGroup>
 
 </Project>
