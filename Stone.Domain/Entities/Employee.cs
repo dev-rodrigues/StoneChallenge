@@ -6,9 +6,8 @@ using System.Text;
 
 namespace Stone.Domain.Entities
 {
-    public class Employee
+    public class Employee : EntityBase<int>
     {
-        public int Id { get; set; }
 
         public string Nome { get; set; }
 
@@ -27,10 +26,10 @@ namespace Stone.Domain.Entities
         public bool PlanoDental { get; set; }
 
         public bool ValeTransporte { get; set; }
-        
+
         public Employee()
         {
 
-        }    
+        }
     }
 }
