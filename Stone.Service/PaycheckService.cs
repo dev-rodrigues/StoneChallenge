@@ -3,6 +3,7 @@ using Stone.Domain.Interface.Repositories;
 using Stone.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -47,6 +48,7 @@ namespace Stone.Service
                 }
             };
 
+            paySlip.Referencia = MonthService.GetMonth(new DateTime().Month);
             paySlip.SalarioLiquido = GetNetPay(paySlip.Employee.SalarioBruto, paySlip.TotalDesconto);
 
             return paySlip;
