@@ -6,7 +6,7 @@ namespace Stone.Domain.Entities
 {
     public class Paymentslip
     {
-        public Employee Employee { get; set; }
+        public EmployeeDTO Employee { get; set; }
         public List<Discount> Discounts { get; set; }
 
         public Paymentslip()

@@ -34,7 +34,15 @@ namespace Stone.Service
             return new Paymentslip()
             {
                 Discounts = discounts,
-                Employee = _employee
+                Employee = new EmployeeDTO()
+                {
+                    Nome = _employee.Nome,
+                    SobreNome = _employee.SobreNome,
+                    Cpf = _employee.Cpf,
+                    Setor = _employee.Setor,
+                    SalarioBruto = _employee.SalarioBruto,
+                    Admissao = _employee.Admissao
+                }
             };
         }
 
