@@ -12,7 +12,7 @@ namespace Stone.Service
     {
         private Employee _employee { get; set; }
         private readonly IDiscount _inssRepository = EmployeeServiceLocator.GetInstance<InssRepository>();
-        private readonly IDiscount _iprfRepository = EmployeeServiceLocator.GetInstance<InssRepository>();
+        private readonly IDiscount _iprfRepository = EmployeeServiceLocator.GetInstance<IrpfRepository>();
 
         public PaycheckService(Employee employee)
         {
@@ -50,8 +50,9 @@ namespace Stone.Service
             return new Discount()
             {
                 TypeOfDiscount = "Saúde",
-                Dedution = _employee.PlanoSaude ? _employee.SalarioBruto - 10 : 0,
-                Aliquot = 0
+                Dedution = 0,
+                Aliquot = 0,
+                ValueOfDiscount = _employee.PlanoSaude ? 10 : 0
             };
         }
 
@@ -60,8 +61,9 @@ namespace Stone.Service
             return new Discount()
             {
                 TypeOfDiscount = "Plano de Dental",
-                Dedution = _employee.PlanoSaude ? _employee.SalarioBruto - 5 : 0,
-                Aliquot = 0
+                Dedution = 0,
+                Aliquot = 0,
+                ValueOfDiscount = _employee.PlanoSaude ? 5 : 0,
             };
         }
 

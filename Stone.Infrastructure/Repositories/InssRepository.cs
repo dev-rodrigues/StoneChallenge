@@ -1,6 +1,7 @@
 ﻿using Stone.Domain.Entities;
 using Stone.Domain.Interface.Repositories;
 using Stone.Infrastructure.DataContextLayer;
+using Stone.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace Stone.Infrastructure.Repositories
                 TypeOfDiscount = "INSS",
                 Dedution = 0,
                 Aliquot = alicota,
-                ValueOfDiscount = 0
+                ValueOfDiscount = CalculeteDiscountService.CalculeteInss(alicota, salary)
             };
         }
     }

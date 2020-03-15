@@ -1,7 +1,7 @@
 ﻿using Stone.Domain.Entities;
 using Stone.Domain.Interface.Repositories;
 using Stone.Infrastructure.DataContextLayer;
-using Stone.Infrastructure.Util;
+using Stone.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +32,7 @@ namespace Stone.Infrastructure.Repositories
                 {
                     alicota = a.Alicota;
                     deducao = a.Deduzir;
-                    descontar = CalculateDiscount.Calculete(alicota, salary);
+                    descontar = CalculeteDiscountService.CalculeteIrpf(alicota, deducao, salary);
                     break;
                 }
             }
