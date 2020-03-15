@@ -4,6 +4,7 @@ using Stone.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Stone.Service
@@ -21,12 +22,14 @@ namespace Stone.Service
 
         public Paymentslip GetPaySlip()
         {
-            List<Discount> discounts = new List<Discount>();
+            var discounts = new List<Discount>();
 
-            discounts.Add(GetDiscountInss());
-            discounts.Add(GetDiscountIrpf());
-            discounts.Add(GetDiscountHealthPlan());
-            discounts.Add(GetDiscountDentalPlan());
+            GetDiscountInss(discounts);
+            GetDiscountIrpf(discounts);
+            GetDiscountHealthPlan(discounts);
+            GetDiscountDentalPlan(discounts);
+            GetDiscountTransport(discounts);
+            GetDiscountFgts(discounts);
 
             return new Paymentslip()
             {
@@ -35,41 +38,57 @@ namespace Stone.Service
             };
         }
 
-        public Discount GetDiscountInss()
+        public void GetDiscountInss(List<Discount> discounts)
         {
-            return _inssRepository.GetDiscount(_employee.SalarioBruto);
+            discounts.Add(_inssRepository.GetDiscount(_employee.SalarioBruto));
         }
 
-        public Discount GetDiscountIrpf()
+        public void GetDiscountIrpf(List<Discount> discounts)
         {
-            return _iprfRepository.GetDiscount(_employee.SalarioBruto);
+            discounts.Add(_iprfRepository.GetDiscount(_employee.SalarioBruto));
         }
 
-        public Discount GetDiscountHealthPlan()
+        public void GetDiscountHealthPlan(List<Discount> discounts)
         {
-            return new Discount()
+            var planoDeSaude = new Discount()
             {
-                TypeOfDiscount = "Saúde",
-                Dedution = 0,
-                Aliquot = 0,
+                TypeOfDiscount = "Plano de Saúde",
                 ValueOfDiscount = _employee.PlanoSaude ? 10 : 0
             };
+            discounts.Add(planoDeSaude);
         }
 
-        public Discount GetDiscountDentalPlan()
+        public void GetDiscountDentalPlan(List<Discount> discounts)
         {
-            return new Discount()
+            var dental = new Discount()
             {
                 TypeOfDiscount = "Plano de Dental",
-                Dedution = 0,
-                Aliquot = 0,
                 ValueOfDiscount = _employee.PlanoSaude ? 5 : 0,
             };
+            discounts.Add(dental);
         }
 
-        public Task<Discount> GetDiscountTransport()
+        public void GetDiscountTransport(List<Discount> discounts)
         {
-            return null;
+            var transporte = new Discount()
+            {
+                TypeOfDiscount = "Transporte",
+                ValueOfDiscount = _employee.ValeTransporte ?
+                    CalculeteDiscountService.CacluleTransport(_employee.SalarioBruto) : 0
+            };
+            discounts.Add(transporte);
+        }
+
+        public void GetDiscountFgts(List<Discount> discounts)
+        {
+            var fgts
+                = new Discount()
+                {
+                    TypeOfDiscount = "FGTS",
+                    ValueOfDiscount = CalculeteDiscountService.CacluleFGTS(_employee.SalarioBruto)
+
+                };
+            discounts.Add(fgts);
         }
     }
 }

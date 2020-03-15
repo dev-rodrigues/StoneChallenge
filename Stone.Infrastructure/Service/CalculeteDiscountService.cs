@@ -6,6 +6,7 @@ namespace Stone.Service
 {
     public class CalculeteDiscountService
     {
+        private static decimal VALOR_MINIMO = 1500.00m;
 
         public static decimal CalculeteIrpf(decimal alicota, decimal deducion, decimal salary)
         {
@@ -20,13 +21,39 @@ namespace Stone.Service
 
             imposto = ((alicota / 100) * salary);
             imposto = imposto - deducion;
-            return Decimal.Round(imposto);
+            return Decimal.Round(imposto, 2);
         }
 
         public static decimal CalculeteInss(decimal alicota, decimal salary)
         {
             decimal imposto = ((alicota / 100) * salary);
-            return Decimal.Round(imposto);
+            return Decimal.Round(imposto, 2);
+        }
+
+        public static decimal CacluleTransport(decimal salary)
+        {
+            decimal desconto = 0;
+            if (salary < VALOR_MINIMO)
+            {
+                return desconto;
+            }
+
+            desconto = (decimal)0.06 * salary;
+
+            return Decimal.Round(desconto, 2);
+        }
+
+        public static decimal CacluleFGTS(decimal salary)
+        {
+            decimal desconto = 0;
+            if (salary < VALOR_MINIMO)
+            {
+                return desconto;
+            }
+
+            desconto = (decimal)0.08 * salary;
+
+            return Decimal.Round(desconto, 2);
         }
     }
 }
