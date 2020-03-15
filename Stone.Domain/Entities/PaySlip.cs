@@ -8,6 +8,8 @@ namespace Stone.Domain.Entities
     {
         public EmployeeDTO Employee { get; set; }
         public List<Discount> Discounts { get; set; }
+        public decimal TotalDesconto { get; set; }
+        public decimal SalarioLiquido { get; set; }
 
         public Paymentslip()
         {

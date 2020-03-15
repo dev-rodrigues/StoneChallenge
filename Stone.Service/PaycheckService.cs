@@ -31,9 +31,11 @@ namespace Stone.Service
             GetDiscountTransport(discounts);
             GetDiscountFgts(discounts);
 
-            return new Paymentslip()
+            var paySlip = new Paymentslip()
             {
                 Discounts = discounts,
+                TotalDesconto = GetDiscount(discounts),
+
                 Employee = new EmployeeDTO()
                 {
                     Nome = _employee.Nome,
@@ -44,6 +46,10 @@ namespace Stone.Service
                     Admissao = _employee.Admissao
                 }
             };
+
+            paySlip.SalarioLiquido = GetNetPay(paySlip.Employee.SalarioBruto, paySlip.TotalDesconto);
+
+            return paySlip;
         }
 
         public void GetDiscountInss(List<Discount> discounts)
@@ -97,6 +103,23 @@ namespace Stone.Service
 
                 };
             discounts.Add(fgts);
+        }
+
+        public decimal GetDiscount(List<Discount> discounts)
+        {
+            decimal sum = 0;
+            foreach (var desconto in discounts)
+            {
+                sum += desconto.ValueOfDiscount;
+            }
+            return Decimal.Round((sum * -1), 2);
+        }
+
+        public decimal GetNetPay(decimal salary, decimal discount)
+        {
+            decimal netPay = salary + discount;
+
+            return Decimal.Round(netPay, 2);
         }
     }
 }
