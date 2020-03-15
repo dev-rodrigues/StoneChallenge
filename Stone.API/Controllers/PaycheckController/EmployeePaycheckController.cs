@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
+using Stone.Domain.Entities;
 using Stone.Domain.Interface.Repositories;
 using Stone.Infrastructure.Repositories;
 using Stone.Service;
@@ -16,15 +18,40 @@ namespace Stone.API.Controllers.EmployeeController
     {
 
         private readonly EmployeeService employeeService = new EmployeeService();
+        private readonly IDistributedCache _distributedCache;
+
+        public EmployeePaycheckController(IDistributedCache distributedCache)
+        {
+            _distributedCache = distributedCache;
+        }
 
         [HttpGet]
-        public IActionResult Show(int employeeId)
+        public async Task<IActionResult> Show(int employeeId)
         {
-            var employee = employeeService.GetEmployeeById(employeeId);
+            var cacheKey = employeeId.ToString();
+            var existingKey = await _distributedCache.GetStringAsync(cacheKey);
+            Paymentslip spli;
 
-            var teste = new PaycheckService(employee);
-            var teste2 = teste.GetPaySlip();
-            return Ok(teste2);
+            if (!string.IsNullOrEmpty(existingKey))
+            {
+                return Ok(existingKey);
+            }
+            else
+            {
+                // busca o usuario
+                var employee = employeeService.GetEmployeeById(employeeId);
+
+
+                // cria servico pro usuario
+                var service = new PaycheckService(employee);
+
+                // gera contracheque
+                spli = service.GetPaySlip();
+
+                // adiciona obj no redis
+                await _distributedCache.SetStringAsync(cacheKey, spli.ToString());
+            }
+            return Ok(spli);
         }
     }
 }

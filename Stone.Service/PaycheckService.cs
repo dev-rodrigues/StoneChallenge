@@ -24,14 +24,8 @@ namespace Stone.Service
         public Paymentslip GetPaySlip()
         {
             var discounts = new List<Discount>();
-
-            GetDiscountInss(discounts);
-            GetDiscountIrpf(discounts);
-            GetDiscountHealthPlan(discounts);
-            GetDiscountDentalPlan(discounts);
-            GetDiscountTransport(discounts);
-            GetDiscountFgts(discounts);
-
+            GetDiscounts(discounts);
+            
             var paySlip = new Paymentslip()
             {
                 Discounts = discounts,
@@ -54,17 +48,27 @@ namespace Stone.Service
             return paySlip;
         }
 
-        public void GetDiscountInss(List<Discount> discounts)
+        public void GetDiscounts(List<Discount> discounts)
+        {
+            addDiscountInss(discounts);
+            addDiscountIrpf(discounts);
+            addDiscountHealthPlan(discounts);
+            addDiscountDentalPlan(discounts);
+            addDiscountTransport(discounts);
+            addDiscountFgts(discounts);
+        }
+
+        public void addDiscountInss(List<Discount> discounts)
         {
             discounts.Add(_inssRepository.GetDiscount(_employee.SalarioBruto));
         }
 
-        public void GetDiscountIrpf(List<Discount> discounts)
+        public void addDiscountIrpf(List<Discount> discounts)
         {
             discounts.Add(_iprfRepository.GetDiscount(_employee.SalarioBruto));
         }
 
-        public void GetDiscountHealthPlan(List<Discount> discounts)
+        public void addDiscountHealthPlan(List<Discount> discounts)
         {
             var planoDeSaude = new Discount()
             {
@@ -74,7 +78,7 @@ namespace Stone.Service
             discounts.Add(planoDeSaude);
         }
 
-        public void GetDiscountDentalPlan(List<Discount> discounts)
+        public void addDiscountDentalPlan(List<Discount> discounts)
         {
             var dental = new Discount()
             {
@@ -84,7 +88,7 @@ namespace Stone.Service
             discounts.Add(dental);
         }
 
-        public void GetDiscountTransport(List<Discount> discounts)
+        public void addDiscountTransport(List<Discount> discounts)
         {
             var transporte = new Discount()
             {
@@ -95,7 +99,7 @@ namespace Stone.Service
             discounts.Add(transporte);
         }
 
-        public void GetDiscountFgts(List<Discount> discounts)
+        public void addDiscountFgts(List<Discount> discounts)
         {
             var fgts
                 = new Discount()
