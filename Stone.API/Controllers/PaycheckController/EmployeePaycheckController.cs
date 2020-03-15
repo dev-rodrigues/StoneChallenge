@@ -42,14 +42,13 @@ namespace Stone.API.Controllers.EmployeeController
                 // busca o usuario
                 var employee = employeeService.GetEmployeeById(employeeId);
 
-
                 // cria servico pro usuario
                 var service = new PaycheckService(employee);
 
                 // gera contracheque
                 slip = service.GetPaySlip();
 
-                // adiciona obj no redis
+                // adiciona obj serializado ao redis
                 await _distributedCache.SetStringAsync(cacheKey, JsonConvert.SerializeObject(slip));
             }
             return Ok(slip);
