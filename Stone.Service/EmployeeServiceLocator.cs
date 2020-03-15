@@ -15,6 +15,16 @@ namespace Stone.Service
             [typeof(IEmployee)] = typeof(EmployeeRepository)
         };
 
+        private static Dictionary<Type, Type> InssService = new Dictionary<Type, Type>
+        {
+            [typeof(IDiscount)] = typeof(InssRepository)
+        };
+
+        private static Dictionary<Type, Type> IrpfService = new Dictionary<Type, Type>
+        {
+            [typeof(IDiscount)] = typeof(IrpfRepository)
+        };
+
         internal static T GetInstance<T>()
         {
             return Activator.CreateInstance<T>();

@@ -70,7 +70,7 @@ namespace Stone.Infrastructure.Migrations
                     b.ToTable("Inss");
                 });
 
-            modelBuilder.Entity("Stone.Domain.Entities.Irrf", b =>
+            modelBuilder.Entity("Stone.Domain.Entities.Irpf", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -86,7 +86,7 @@ namespace Stone.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Irff");
+                    b.ToTable("Irpf");
                 });
 #pragma warning restore 612, 618
         }

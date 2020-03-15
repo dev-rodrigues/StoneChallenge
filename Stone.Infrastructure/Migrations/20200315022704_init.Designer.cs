@@ -10,8 +10,8 @@ using Stone.Infrastructure.DataContextLayer;
 namespace Stone.Infrastructure.Migrations
 {
     [DbContext(typeof(EFDataContext))]
-    [Migration("20200315010740_Inss")]
-    partial class Inss
+    [Migration("20200315022704_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,6 +70,25 @@ namespace Stone.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Inss");
+                });
+
+            modelBuilder.Entity("Stone.Domain.Entities.Irpf", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("Alicota");
+
+                    b.Property<decimal>("Deduzir");
+
+                    b.Property<decimal>("Maximo");
+
+                    b.Property<decimal>("Minimo");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Irpf");
                 });
 #pragma warning restore 612, 618
         }

@@ -10,7 +10,7 @@ namespace Stone.Infrastructure.DataContextLayer
     {
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Inss> Inss { get; set; }
-        public DbSet<Irrf> Irff { get; set; }
+        public DbSet<Irpf> Irpf { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -44,7 +44,7 @@ namespace Stone.Infrastructure.DataContextLayer
         {
             modelBuilder.Entity<Inss>(i =>
             {
-                i.ToTable("Irrf");
+                i.ToTable("Irpf");
             });
         }
     }

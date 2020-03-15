@@ -18,13 +18,11 @@ namespace Stone.Service
 
         public Employee AddEmployee(Employee employee)
         {
-            Console.WriteLine("---");
             return _service.Create(employee);
         }
 
         public Employee GetEmployeeById(int id)
         {
-            Console.WriteLine("---");
             return _service.Read(id);
         }
     }

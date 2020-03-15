@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Aggregations\" />
     <Folder Include="Factories\" />
     <Folder Include="Specifications\" />
   </ItemGroup>
