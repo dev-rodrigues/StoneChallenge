@@ -34,7 +34,6 @@ namespace Stone.Infrastructure.Repositories
 
         public Employee Read(int id)
         {
-            Console.WriteLine("---");
             return _db.Employees.Find(id);
         }
     }

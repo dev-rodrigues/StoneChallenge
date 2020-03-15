@@ -1,4 +1,6 @@
 ﻿using Stone.Domain.Entities;
+using Stone.Domain.Interface.Repositories;
+using Stone.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,36 +10,57 @@ namespace Stone.Service
 {
     public class PaycheckService
     {
-        public Employee _employee { get; set; }
+        private Employee _employee { get; set; }
+        private readonly IDiscount _inssRepository = EmployeeServiceLocator.GetInstance<InssRepository>();
+        private readonly IDiscount _iprfRepository = EmployeeServiceLocator.GetInstance<InssRepository>();
 
         public PaycheckService(Employee employee)
         {
             _employee = employee;
         }
-        
-        public Task<Paymentslip> GetPaySlip()
+
+        public Paymentslip GetPaySlip()
         {
-            return null;
+            List<Discount> discounts = new List<Discount>();
+
+            discounts.Add(GetDiscountInss());
+            discounts.Add(GetDiscountIrpf());
+            discounts.Add(GetDiscountHealthPlan());
+            discounts.Add(GetDiscountDentalPlan());
+
+            return new Paymentslip()
+            {
+                Discounts = discounts,
+                Employee = _employee
+            };
         }
 
-        public Task<Discount> GetDiscountInss()
+        public Discount GetDiscountInss()
         {
-            return null;
+            return _inssRepository.GetDiscount(_employee.SalarioBruto);
         }
 
-        public Task<Discount> GetDiscountIrpf()
+        public Discount GetDiscountIrpf()
         {
-            return null;
+            return _iprfRepository.GetDiscount(_employee.SalarioBruto);
         }
 
-        public Task<Discount> GetDiscountHealthPlan()
+        public Discount GetDiscountHealthPlan()
         {
-            return null;
+            return new Discount()
+            {
+                TypeOfDiscount = "Plano de Saúde",
+                Value = _employee.PlanoSaude ? _employee.SalarioBruto - 10 : 0
+            };
         }
 
-        public Task<Discount> GetDiscountDentalPlan()
+        public Discount GetDiscountDentalPlan()
         {
-            return null;
+            return new Discount()
+            {
+                TypeOfDiscount = "Plano de Dental",
+                Value = _employee.PlanoSaude ? _employee.SalarioBruto - 5 : 0
+            };
         }
 
         public Task<Discount> GetDiscountTransport()
