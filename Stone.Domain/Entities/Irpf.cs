@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Stone.Domain.Entities
 {
-    public class Irrf : EntityBase<int>
+    public class Irpf : EntityBase<int>
     {
         public decimal Minimo { get; set; }
         public decimal Maximo { get; set; }
