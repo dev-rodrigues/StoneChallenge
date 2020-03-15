@@ -30,7 +30,16 @@ namespace Stone.API.Controllers.EmployeeController
         public async Task<IActionResult> Show(int employeeId)
         {
             var cacheKey = employeeId.ToString();
-            var existingKey = await _distributedCache.GetStringAsync(cacheKey);
+            string existingKey = String.Empty;
+            try
+            {
+                existingKey = await _distributedCache.GetStringAsync(cacheKey);
+            }
+            catch
+            {
+                existingKey = String.Empty;
+            }
+
             Paymentslip slip;
 
             if (!string.IsNullOrEmpty(existingKey))
@@ -49,7 +58,15 @@ namespace Stone.API.Controllers.EmployeeController
                 slip = service.GetPaySlip();
 
                 // adiciona obj serializado ao redis
-                await _distributedCache.SetStringAsync(cacheKey, JsonConvert.SerializeObject(slip));
+                try
+                {
+                    await _distributedCache.SetStringAsync(cacheKey, JsonConvert.SerializeObject(slip));
+                }
+                catch
+                {
+                    Console.WriteLine("nao faz nada");
+                }
+                
             }
             return Ok(slip);
         }
