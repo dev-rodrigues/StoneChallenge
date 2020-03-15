@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
+using Newtonsoft.Json;
 using Stone.Domain.Entities;
 using Stone.Domain.Interface.Repositories;
 using Stone.Infrastructure.Repositories;
@@ -30,7 +31,7 @@ namespace Stone.API.Controllers.EmployeeController
         {
             var cacheKey = employeeId.ToString();
             var existingKey = await _distributedCache.GetStringAsync(cacheKey);
-            Paymentslip spli;
+            Paymentslip slip;
 
             if (!string.IsNullOrEmpty(existingKey))
             {
@@ -46,12 +47,12 @@ namespace Stone.API.Controllers.EmployeeController
                 var service = new PaycheckService(employee);
 
                 // gera contracheque
-                spli = service.GetPaySlip();
+                slip = service.GetPaySlip();
 
                 // adiciona obj no redis
-                await _distributedCache.SetStringAsync(cacheKey, spli.ToString());
+                await _distributedCache.SetStringAsync(cacheKey, JsonConvert.SerializeObject(slip));
             }
-            return Ok(spli);
+            return Ok(slip);
         }
     }
 }
