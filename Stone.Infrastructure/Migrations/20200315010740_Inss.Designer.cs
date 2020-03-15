@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Stone.Infrastructure.DataContextLayer;
 
 namespace Stone.Infrastructure.Migrations
 {
     [DbContext(typeof(EFDataContext))]
-    partial class EFDataContextModelSnapshot : ModelSnapshot
+    [Migration("20200315010740_Inss")]
+    partial class Inss
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,23 +70,6 @@ namespace Stone.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Inss");
-                });
-
-            modelBuilder.Entity("Stone.Domain.Entities.Irrf", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<decimal>("Alicota");
-
-                    b.Property<decimal>("Maximo");
-
-                    b.Property<decimal>("Minimo");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Irff");
                 });
 #pragma warning restore 612, 618
         }
