@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Factories\" />
+    <Folder Include="Specifications\" />
+  </ItemGroup>
+
 </Project>

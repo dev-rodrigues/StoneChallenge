@@ -30,6 +30,11 @@ namespace Stone.API.Controllers.EmployeeController
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Store(Employee employee)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
             var saved_employee = employeeService.AddEmployee(employee);
             return CreatedAtAction(nameof(Show), new { employeeId = saved_employee.Id }, saved_employee);
         }
