@@ -11,11 +11,11 @@ namespace Stone.Domain.Entities
         public EmployeeDTO Employee { get; set; }
         public decimal TotalDesconto { get; set; }
         public decimal SalarioLiquido { get; set; }
-        public List<Discount> Discounts { get; set; }
+        public List<Discount> Lancamentos { get; set; }
         
         public Paymentslip()
-        {            
-            Discounts = new List<Discount>();
+        {
+            Lancamentos = new List<Discount>();
         }
     }
 }

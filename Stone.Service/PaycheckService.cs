@@ -28,7 +28,7 @@ namespace Stone.Service
             
             var paySlip = new Paymentslip()
             {
-                Discounts = discounts,
+                Lancamentos = discounts,
                 TotalDesconto = GetDiscount(discounts),
 
                 Employee = new EmployeeDTO()
