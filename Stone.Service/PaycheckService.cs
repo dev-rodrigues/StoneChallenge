@@ -49,8 +49,9 @@ namespace Stone.Service
         {
             return new Discount()
             {
-                TypeOfDiscount = "Plano de Saúde",
-                Value = _employee.PlanoSaude ? _employee.SalarioBruto - 10 : 0
+                TypeOfDiscount = "Saúde",
+                Dedution = _employee.PlanoSaude ? _employee.SalarioBruto - 10 : 0,
+                Aliquot = 0
             };
         }
 
@@ -59,7 +60,8 @@ namespace Stone.Service
             return new Discount()
             {
                 TypeOfDiscount = "Plano de Dental",
-                Value = _employee.PlanoSaude ? _employee.SalarioBruto - 5 : 0
+                Dedution = _employee.PlanoSaude ? _employee.SalarioBruto - 5 : 0,
+                Aliquot = 0
             };
         }
 

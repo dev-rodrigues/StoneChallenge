@@ -1,6 +1,7 @@
 ﻿using Stone.Domain.Entities;
 using Stone.Domain.Interface.Repositories;
 using Stone.Infrastructure.DataContextLayer;
+using Stone.Infrastructure.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace Stone.Infrastructure.Repositories
             var alicotas = _db.Irpf.ToList();
             decimal alicota = 0;
             decimal deducao = 0;
+            decimal descontar = 0;
 
             foreach (var a in alicotas)
             {
@@ -30,14 +32,17 @@ namespace Stone.Infrastructure.Repositories
                 {
                     alicota = a.Alicota;
                     deducao = a.Deduzir;
+                    descontar = CalculateDiscount.Calculete(alicota, salary);
+                    break;
                 }
             }
             
             return new Discount()
             {
-                TypeOfDiscount = "INSS",
+                TypeOfDiscount = "IRPF",
                 Aliquot = alicota,
-                Dedution = deducao
+                Dedution = deducao,
+                ValueOfDiscount = descontar
             };
         }
     }

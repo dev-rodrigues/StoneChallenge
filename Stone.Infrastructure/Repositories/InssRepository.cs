@@ -28,15 +28,16 @@ namespace Stone.Infrastructure.Repositories
                 if (salary >= a.Minimo && salary <= a.Maximo)
                 {
                     alicota = a.Alicota;
-                       
+                    break;
                 }
             }
 
             return new Discount()
             {
                 TypeOfDiscount = "INSS",
-                Dedution = alicota,
-                Aliquot = 0
+                Dedution = 0,
+                Aliquot = alicota,
+                ValueOfDiscount = 0
             };
         }
     }

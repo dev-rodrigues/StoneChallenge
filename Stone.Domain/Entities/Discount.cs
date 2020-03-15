@@ -9,6 +9,7 @@ namespace Stone.Domain.Entities
         public string TypeOfDiscount { get; set; }
         public decimal Aliquot { get; set; }
         public decimal Dedution { get; set; }
+        public decimal ValueOfDiscount { get; set; }
 
         public Discount()
         {
