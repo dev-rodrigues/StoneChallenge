@@ -50,23 +50,23 @@ namespace Stone.Test
         public void Deve_VerificarIRPF_ZeradoDoFuncionario_QuandoGerar_ContraCheque()
         {
             var paycheck = GeraContraChequeFuncionarioPobre();
-            var irpf = paycheck.Lancamentos.Find(x => x.TypeOfDiscount.Equals("INSS"));
-            Assert.AreEqual(irpf.ValueOfDiscount, 0);
+            var irpf = paycheck.Lancamentos.Find(x => x.TipoDeDesconto.Equals("INSS"));
+            Assert.AreEqual(irpf.ValorDesconto, 0);
         }
 
         [TestMethod]
         public void Deve_VerificarAlicota_ZeradaDoFuncionario_QuandoGerar_ContraCheque()
         {
             var paycheck = GeraContraChequeFuncionarioPobre();
-            var irpf = paycheck.Lancamentos.Find(x => x.TypeOfDiscount.Equals("INSS"));
-            Assert.AreEqual(irpf.Aliquot, 0);
+            var irpf = paycheck.Lancamentos.Find(x => x.TipoDeDesconto.Equals("INSS"));
+            Assert.AreEqual(irpf.Aliquota, 0);
         }
 
         [TestMethod]
         public void Deve_Verificar_Se_ExisteDesconto_Transporte_ContraCheque()
         {
             var contraCheque = GeraContraChequeFuncionarioRico();
-            var DescontoTransporte = contraCheque.Lancamentos.Find(x => x.TypeOfDiscount.Equals("Transporte"));
+            var DescontoTransporte = contraCheque.Lancamentos.Find(x => x.TipoDeDesconto.Equals("Transporte"));
             Assert.IsNotNull(DescontoTransporte);
         }
 
@@ -74,7 +74,7 @@ namespace Stone.Test
         public void Deve_Verificar_Se_ExisteDesconto_PlanoDental_ContraCheque()
         {
             var contraCheque = GeraContraChequeFuncionarioRico();
-            var DescontoDental = contraCheque.Lancamentos.Find(x => x.TypeOfDiscount.Equals("Plano de Dental"));
+            var DescontoDental = contraCheque.Lancamentos.Find(x => x.TipoDeDesconto.Equals("Plano de Dental"));
             Assert.IsNotNull(DescontoDental);
         }
 
@@ -82,7 +82,7 @@ namespace Stone.Test
         public void Deve_Verificar_Se_ExisteDesconto_PlanoSaude_ContraCheque()
         {
             var contraCheque = GeraContraChequeFuncionarioRico();
-            var DescontoSaude = contraCheque.Lancamentos.Find(x => x.TypeOfDiscount.Equals("Plano de Saúde"));
+            var DescontoSaude = contraCheque.Lancamentos.Find(x => x.TipoDeDesconto.Equals("Plano de Saúde"));
             Assert.IsNotNull(DescontoSaude);
         }
 

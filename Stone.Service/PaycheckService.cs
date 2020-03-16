@@ -72,8 +72,8 @@ namespace Stone.Service
         {
             var planoDeSaude = new Discount()
             {
-                TypeOfDiscount = "Plano de Saúde",
-                ValueOfDiscount = _employee.PlanoSaude ? 10 : 0
+                TipoDeDesconto = "Plano de Saúde",
+                ValorDesconto = _employee.PlanoSaude ? 10 : 0
             };
             discounts.Add(planoDeSaude);
         }
@@ -82,8 +82,8 @@ namespace Stone.Service
         {
             var dental = new Discount()
             {
-                TypeOfDiscount = "Plano de Dental",
-                ValueOfDiscount = _employee.PlanoSaude ? 5 : 0,
+                TipoDeDesconto = "Plano de Dental",
+                ValorDesconto = _employee.PlanoSaude ? 5 : 0,
             };
             discounts.Add(dental);
         }
@@ -92,8 +92,8 @@ namespace Stone.Service
         {
             var transporte = new Discount()
             {
-                TypeOfDiscount = "Transporte",
-                ValueOfDiscount = _employee.ValeTransporte ?
+                TipoDeDesconto = "Transporte",
+                ValorDesconto = _employee.ValeTransporte ?
                     CalculeteDiscountService.CacluleTransport(_employee.SalarioBruto) : 0
             };
             discounts.Add(transporte);
@@ -104,8 +104,8 @@ namespace Stone.Service
             var fgts
                 = new Discount()
                 {
-                    TypeOfDiscount = "FGTS",
-                    ValueOfDiscount = CalculeteDiscountService.CacluleFGTS(_employee.SalarioBruto)
+                    TipoDeDesconto = "FGTS",
+                    ValorDesconto = CalculeteDiscountService.CacluleFGTS(_employee.SalarioBruto)
 
                 };
             discounts.Add(fgts);
@@ -116,7 +116,7 @@ namespace Stone.Service
             decimal sum = 0;
             foreach (var desconto in discounts)
             {
-                sum += desconto.ValueOfDiscount;
+                sum += desconto.ValorDesconto;
             }
             return Decimal.Round((sum * -1), 2);
         }

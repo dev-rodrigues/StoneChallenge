@@ -35,10 +35,10 @@ namespace Stone.Infrastructure.Repositories
 
             return new Discount()
             {
-                TypeOfDiscount = "INSS",
-                Dedution = 0,
-                Aliquot = alicota,
-                ValueOfDiscount = CalculeteDiscountService.CalculeteInss(alicota, salary)
+                TipoDeDesconto = "INSS",
+                Deducao = 0,
+                Aliquota = alicota,
+                ValorDesconto = CalculeteDiscountService.CalculeteInss(alicota, salary)
             };
         }
     }

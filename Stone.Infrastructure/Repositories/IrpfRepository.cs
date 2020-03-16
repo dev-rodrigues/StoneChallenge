@@ -39,10 +39,10 @@ namespace Stone.Infrastructure.Repositories
             
             return new Discount()
             {
-                TypeOfDiscount = "IRPF",
-                Aliquot = alicota,
-                Dedution = deducao,
-                ValueOfDiscount = descontar
+                TipoDeDesconto = "IRPF",
+                Aliquota = alicota,
+                Deducao = deducao,
+                ValorDesconto = descontar
             };
         }
     }
