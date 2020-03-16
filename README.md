@@ -4,7 +4,7 @@ Olá! Esté o StonePayment, um serviço para criar o extrato da folha salarial d
 
 ## Como Rodar
 
-Você pode executar o Routiner de 2 formas:
+Você pode executar o StonePayment de 2 formas:
 
 ### Docker Container
  
