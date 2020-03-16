@@ -54,22 +54,20 @@ Criar um funcionário
 Busca um funcionário
 ```
 --request GET
-  --url http://localhost:32769/api/Employee?employeeId={id}
+  url http://localhost:32769/api/Employee?employeeId={id}
 ```
 
 Buscar contracheque
 ```
 --request GET
-  --url http://localhost:32769/api/EmployeePaycheck?employeeId={id}
+  url http://localhost:32769/api/EmployeePaycheck?employeeId={id}
 ```
 
 ## Testes 
 
 Existem testes cobrindo as principais funcionalidades do StonePayment.
 Para rodar os testes, você pode rodar individualmente pela sua IDE, ou
-com o comando:
-
+com o comando dentro do diretório da aplicação:
 ```
- Dentro do diretório da aplicação:
  dotnet test
 ```
