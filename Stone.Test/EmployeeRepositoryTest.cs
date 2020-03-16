@@ -53,6 +53,15 @@ namespace Stone.Test
         }
 
         [TestMethod]
+        public void Deve_VerificarDataAdmissao_QuandoCriado()
+        {
+            var employee = CriaEmployeeFake();
+            var employee_salvo = _service.Create(employee);
+            var employee_buscado = _service.Read(employee_salvo.Id);
+            Assert.AreEqual(employee_salvo.Admissao, employee_buscado.Admissao);
+        }
+
+        [TestMethod]
         public void Deve_Testar_Service_Quando_ExecutarTeste()
         {
             Assert.IsNotNull(_service);
