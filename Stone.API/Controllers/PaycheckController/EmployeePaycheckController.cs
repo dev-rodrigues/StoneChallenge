@@ -60,13 +60,15 @@ namespace Stone.API.Controllers.EmployeeController
                 // adiciona obj serializado ao redis
                 try
                 {
+                    var cacheSettings = new DistributedCacheEntryOptions();
+                    cacheSettings.SetAbsoluteExpiration(TimeSpan.FromHours(1));
                     await _distributedCache.SetStringAsync(cacheKey, JsonConvert.SerializeObject(slip));
                 }
                 catch
                 {
                     Console.WriteLine("nao faz nada");
                 }
-                
+
             }
             return Ok(slip);
         }
