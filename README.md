@@ -19,9 +19,10 @@ docker run -p 7000:7000 {IMAGEM}
 
 ### IDE 
 Para esse passo, você precisará ter o Visual Studio instalado em sua máquina.
-Antes de executar, precisamos buildar o projeto e suas dependências.
+Antes de executar, precisamos buildar o projeto:
 ```
-procedimento para buildar
+ Dentro do diretório do projeto, execute o comando:
+ dotnet build
 ```
 
 ## Como Utilizar
