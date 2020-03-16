@@ -6,13 +6,14 @@
 
   <ItemGroup>
     <Compile Remove="Aggregations\**" />
+    <Compile Remove="Factories\**" />
+    <Compile Remove="Specifications\**" />
     <EmbeddedResource Remove="Aggregations\**" />
+    <EmbeddedResource Remove="Factories\**" />
+    <EmbeddedResource Remove="Specifications\**" />
     <None Remove="Aggregations\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Factories\" />
-    <Folder Include="Specifications\" />
+    <None Remove="Factories\**" />
+    <None Remove="Specifications\**" />
   </ItemGroup>
 
 </Project>
