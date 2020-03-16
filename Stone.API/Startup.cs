@@ -28,8 +28,8 @@ namespace Stone.API
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDistributedRedisCache(option =>
             {
-                //option.Configuration = "redis:6379";
-                option.Configuration = "127.0.0.1:6379";
+                option.Configuration = "redis:6379";
+                //option.Configuration = "127.0.0.1:6379";
                 option.InstanceName = "master";                
             });
         }
