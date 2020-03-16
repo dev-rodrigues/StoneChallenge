@@ -26,10 +26,10 @@ namespace Stone.Test
         public void Deve_VerificarNomeFuncionario_QuandoGerar_ContraCheque()
         {
             var funcionario = CriaEmployeeFakePobre();
-            var funcionario_salvo = _service.Create(funcionario);
+            var funcionario_salvo = _service.Criar(funcionario);
 
             var servicePayCheck = new PaycheckService(funcionario_salvo);
-            var paycheck = servicePayCheck.GetPaySlip();
+            var paycheck = servicePayCheck.GetContraCheque();
 
             Assert.AreEqual(paycheck.Employee.Nome, funcionario_salvo.Nome);
         }
@@ -38,10 +38,10 @@ namespace Stone.Test
         public void Deve_VerificarSalarioFuncionario_QuandoGerar_ContraCheque()
         {
             var funcionario = CriaEmployeeFakePobre();
-            var funcionario_salvo = _service.Create(funcionario);
+            var funcionario_salvo = _service.Criar(funcionario);
 
             var servicePayCheck = new PaycheckService(funcionario_salvo);
-            var paycheck = servicePayCheck.GetPaySlip();
+            var paycheck = servicePayCheck.GetContraCheque();
 
             Assert.AreEqual(paycheck.Employee.SalarioBruto, funcionario_salvo.SalarioBruto);
         }
@@ -90,26 +90,26 @@ namespace Stone.Test
         public void Deve_VerificarAlicotaMaxima_QuandoGerar_ContraCheque()
         {
             var funcionario = CriaEmployeeFakePobre();
-            var funcionario_salvo = _service.Create(funcionario);
+            var funcionario_salvo = _service.Criar(funcionario);
 
             var servicePayCheck = new PaycheckService(funcionario_salvo);
-            var paycheck = servicePayCheck.GetPaySlip();
+            var paycheck = servicePayCheck.GetContraCheque();
         }
 
         private Paymentslip GeraContraChequeFuncionarioPobre()
         {
             var funcionario = CriaEmployeeFakePobre();
-            var funcionario_salvo = _service.Create(funcionario);
+            var funcionario_salvo = _service.Criar(funcionario);
             var servicePayCheck = new PaycheckService(funcionario_salvo);
-            return servicePayCheck.GetPaySlip();
+            return servicePayCheck.GetContraCheque();
         }
 
         private Paymentslip GeraContraChequeFuncionarioRico()
         {
             var funcionario = CriaEmployeeFakePobre();
-            var funcionario_salvo = _service.Create(funcionario);
+            var funcionario_salvo = _service.Criar(funcionario);
             var servicePayCheck = new PaycheckService(funcionario_salvo);
-            return servicePayCheck.GetPaySlip();
+            return servicePayCheck.GetContraCheque();
         }
 
         private Employee CriaEmployeeFakePobre()

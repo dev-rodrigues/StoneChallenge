@@ -17,7 +17,7 @@ namespace Stone.Infrastructure.Repositories
             _db = new EFDataContext();
         }
 
-        public Employee Create(Employee entity)
+        public Employee Criar(Employee entity)
         {            
             try
             {
@@ -32,7 +32,7 @@ namespace Stone.Infrastructure.Repositories
             return null;
         }
 
-        public Employee Read(int id)
+        public Employee Ler(int id)
         {
             return _db.Employees.Find(id);
         }

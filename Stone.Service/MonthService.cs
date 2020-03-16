@@ -6,62 +6,62 @@ namespace Stone.Service
 {
     public class MonthService
     {
-        public static string GetMonth(int month)
+        public static string GetMonth(int mes)
         {
-            string monthRef = "";
+            string mesReferencia = "";
 
-            switch (month)
+            switch (mes)
             {
                 case 1:
-                    monthRef = "JANEIRO";
+                    mesReferencia = "JANEIRO";
                     break;
 
                 case 2:
-                    monthRef = "FEVEREIRO";
+                    mesReferencia = "FEVEREIRO";
                     break;
 
                 case 3:
-                    monthRef = "MARÇO";
+                    mesReferencia = "MARÇO";
                     break;
 
                 case 4:
-                    monthRef = "ABRIL";
+                    mesReferencia = "ABRIL";
                     break;
 
                 case 5:
-                    monthRef = "MAIO";
+                    mesReferencia = "MAIO";
                     break;
 
                 case 6:
-                    monthRef = "JUNHO";
+                    mesReferencia = "JUNHO";
                     break;
 
                 case 7:
-                    monthRef = "JULHO";
+                    mesReferencia = "JULHO";
                     break;
 
                 case 8:
-                    monthRef = "AGOSTO";
+                    mesReferencia = "AGOSTO";
                     break;
 
                 case 9:
-                    monthRef = "SETEMBRO";
+                    mesReferencia = "SETEMBRO";
                     break;
 
                 case 10:
-                    monthRef = "OUTUBRO";
+                    mesReferencia = "OUTUBRO";
                     break;
 
                 case 11:
-                    monthRef = "NOVEMBRO";
+                    mesReferencia = "NOVEMBRO";
                     break;
 
                 case 12:
-                    monthRef = "DEZEMBRO";
+                    mesReferencia = "DEZEMBRO";
                     break;
             }
 
-            return monthRef;
+            return mesReferencia;
         }
     }
 }

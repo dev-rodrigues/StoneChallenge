@@ -31,7 +31,7 @@ namespace Stone.Test
         public void Deve_GerarId_Quando_SalvarEmployee()
         {
             var employee = CriaEmployeeFake();
-            var employee_salvo = _service.Create(employee);
+            var employee_salvo = _service.Criar(employee);
             Assert.IsNotNull(employee_salvo.Id);
         }
 
@@ -39,7 +39,7 @@ namespace Stone.Test
         public void Deve_RetornarNome_Quando_SalvarEmplyee()
         {
             var employee = CriaEmployeeFake();
-            var employee_salvo = _service.Create(employee);
+            var employee_salvo = _service.Criar(employee);
             Assert.AreEqual("fake", employee_salvo.Nome);
         }
 
@@ -47,8 +47,8 @@ namespace Stone.Test
         public void Deve_VerificarNome_Quando_BuscarEmployee()
         {
             var employee = CriaEmployeeFake();
-            var employee_salvo = _service.Create(employee);
-            var employee_buscado = _service.Read(employee_salvo.Id);
+            var employee_salvo = _service.Criar(employee);
+            var employee_buscado = _service.Ler(employee_salvo.Id);
             Assert.IsNotNull(employee_buscado.Nome);
         }
 
@@ -56,8 +56,8 @@ namespace Stone.Test
         public void Deve_VerificarDataAdmissao_QuandoCriado()
         {
             var employee = CriaEmployeeFake();
-            var employee_salvo = _service.Create(employee);
-            var employee_buscado = _service.Read(employee_salvo.Id);
+            var employee_salvo = _service.Criar(employee);
+            var employee_buscado = _service.Ler(employee_salvo.Id);
             Assert.AreEqual(employee_salvo.Admissao, employee_buscado.Admissao);
         }
 

@@ -8,6 +8,6 @@ namespace Stone.Domain.Interface.Repositories
 {
     public interface IDiscount
     {
-        Discount GetDiscount(decimal salary);
+        Discount GetDesconto(decimal salary);
     }
 }

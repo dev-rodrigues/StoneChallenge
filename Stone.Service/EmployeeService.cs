@@ -10,7 +10,7 @@ namespace Stone.Service
 {
     public class EmployeeService
     {
-        public readonly IEmployee _service = EmployeeServiceLocator.GetInstance<EmployeeRepository>();
+        public readonly IEmployee _servico = EmployeeServiceLocator.GetInstance<EmployeeRepository>();
 
         public EmployeeService()
         {            
@@ -18,12 +18,12 @@ namespace Stone.Service
 
         public Employee AddEmployee(Employee employee)
         {
-            return _service.Create(employee);
+            return _servico.Criar(employee);
         }
 
         public Employee GetEmployeeById(int id)
         {
-            return _service.Read(id);
+            return _servico.Ler(id);
         }
     }
 }

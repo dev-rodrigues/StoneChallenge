@@ -7,7 +7,7 @@ namespace Stone.Domain.Interface.Repositories
 {
     public interface IRepository<T, EntityId> where T : EntityBase<EntityId>
     {
-        T Create(T entity);
-        T Read(EntityId id);
+        T Criar(T entity);
+        T Ler(EntityId id);
     }
 }

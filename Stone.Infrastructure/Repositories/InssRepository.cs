@@ -19,7 +19,7 @@ namespace Stone.Infrastructure.Repositories
             _db = new EFDataContext();
         }
 
-        public Discount GetDiscount(decimal salary)
+        public Discount GetDesconto(decimal salary)
         {
             List<Inss> alicotas = _db.Inss.ToList();
             decimal alicota = 0;

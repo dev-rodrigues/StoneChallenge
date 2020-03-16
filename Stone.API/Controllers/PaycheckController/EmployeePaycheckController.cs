@@ -55,7 +55,7 @@ namespace Stone.API.Controllers.EmployeeController
                 var service = new PaycheckService(employee);
 
                 // gera contracheque
-                slip = service.GetPaySlip();
+                slip = service.GetContraCheque();
 
                 // adiciona obj serializado ao redis
                 try

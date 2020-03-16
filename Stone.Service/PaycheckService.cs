@@ -12,33 +12,33 @@ namespace Stone.Service
 {
     public class PaycheckService
     {
-        private Employee _employee { get; set; }
+        private Employee _funcionario { get; set; }
         private readonly IDiscount _inssRepository = EmployeeServiceLocator.GetInstance<InssRepository>();
         private readonly IDiscount _iprfRepository = EmployeeServiceLocator.GetInstance<IrpfRepository>();
 
-        public PaycheckService(Employee employee)
+        public PaycheckService(Employee funcionario)
         {
-            _employee = employee;
+            _funcionario = funcionario;
         }
 
-        public Paymentslip GetPaySlip()
+        public Paymentslip GetContraCheque()
         {
-            var discounts = new List<Discount>();
-            GetDiscounts(discounts);
+            var descontos = new List<Discount>();
+            GetDescontos(descontos);
             
             var paySlip = new Paymentslip()
             {
-                Lancamentos = discounts,
-                TotalDesconto = GetDiscount(discounts),
+                Lancamentos = descontos,
+                TotalDesconto = GetDiscount(descontos),
 
                 Employee = new EmployeeDTO()
                 {
-                    Nome = _employee.Nome,
-                    SobreNome = _employee.SobreNome,
-                    Cpf = _employee.Cpf,
-                    Setor = _employee.Setor,
-                    SalarioBruto = _employee.SalarioBruto,
-                    Admissao = _employee.Admissao
+                    Nome = _funcionario.Nome,
+                    SobreNome = _funcionario.SobreNome,
+                    Cpf = _funcionario.Cpf,
+                    Setor = _funcionario.Setor,
+                    SalarioBruto = _funcionario.SalarioBruto,
+                    Admissao = _funcionario.Admissao
                 }
             };
 
@@ -48,24 +48,24 @@ namespace Stone.Service
             return paySlip;
         }
 
-        public void GetDiscounts(List<Discount> discounts)
+        public void GetDescontos(List<Discount> descontos)
         {
-            addDiscountInss(discounts);
-            addDiscountIrpf(discounts);
-            addDiscountHealthPlan(discounts);
-            addDiscountDentalPlan(discounts);
-            addDiscountTransport(discounts);
-            addDiscountFgts(discounts);
+            addDescontosInss(descontos);
+            addDiscountIrpf(descontos);
+            addDiscountHealthPlan(descontos);
+            addDiscountDentalPlan(descontos);
+            addDiscountTransport(descontos);
+            addDiscountFgts(descontos);
         }
 
-        public void addDiscountInss(List<Discount> discounts)
+        public void addDescontosInss(List<Discount> descontos)
         {
-            discounts.Add(_inssRepository.GetDiscount(_employee.SalarioBruto));
+            descontos.Add(_inssRepository.GetDesconto(_funcionario.SalarioBruto));
         }
 
         public void addDiscountIrpf(List<Discount> discounts)
         {
-            discounts.Add(_iprfRepository.GetDiscount(_employee.SalarioBruto));
+            discounts.Add(_iprfRepository.GetDesconto(_funcionario.SalarioBruto));
         }
 
         public void addDiscountHealthPlan(List<Discount> discounts)
@@ -73,7 +73,7 @@ namespace Stone.Service
             var planoDeSaude = new Discount()
             {
                 TipoDeDesconto = "Plano de Saúde",
-                ValorDesconto = _employee.PlanoSaude ? 10 : 0
+                ValorDesconto = _funcionario.PlanoSaude ? 10 : 0
             };
             discounts.Add(planoDeSaude);
         }
@@ -83,7 +83,7 @@ namespace Stone.Service
             var dental = new Discount()
             {
                 TipoDeDesconto = "Plano de Dental",
-                ValorDesconto = _employee.PlanoSaude ? 5 : 0,
+                ValorDesconto = _funcionario.PlanoSaude ? 5 : 0,
             };
             discounts.Add(dental);
         }
@@ -93,8 +93,8 @@ namespace Stone.Service
             var transporte = new Discount()
             {
                 TipoDeDesconto = "Transporte",
-                ValorDesconto = _employee.ValeTransporte ?
-                    CalculeteDiscountService.CacluleTransport(_employee.SalarioBruto) : 0
+                ValorDesconto = _funcionario.ValeTransporte ?
+                    CalculeteDiscountService.CacluleTransport(_funcionario.SalarioBruto) : 0
             };
             discounts.Add(transporte);
         }
@@ -105,7 +105,7 @@ namespace Stone.Service
                 = new Discount()
                 {
                     TipoDeDesconto = "FGTS",
-                    ValorDesconto = CalculeteDiscountService.CacluleFGTS(_employee.SalarioBruto)
+                    ValorDesconto = CalculeteDiscountService.CacluleFGTS(_funcionario.SalarioBruto)
 
                 };
             discounts.Add(fgts);
