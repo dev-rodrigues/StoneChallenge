@@ -67,8 +67,9 @@ Buscar contracheque
 
 Existem testes cobrindo as principais funcionalidades do StonePayment.
 Para rodar os testes, você pode rodar individualmente pela sua IDE, ou
-com o comando
+com o comando:
 
 ```
---comando--
+ Dentro do diretório da aplicação:
+ dotnet test
 ```
