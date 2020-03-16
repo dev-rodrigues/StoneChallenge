@@ -19,7 +19,7 @@ namespace Stone.Infrastructure.Repositories
             _db = new EFDataContext();
         }
 
-        public Discount GetDesconto(decimal salary)
+        public Discount GetDesconto(decimal salario)
         {
             var alicotas = _db.Irpf.ToList();
             decimal alicota = 0;
@@ -28,11 +28,11 @@ namespace Stone.Infrastructure.Repositories
 
             foreach (var a in alicotas)
             {
-                if (salary >= a.Minimo && salary <= a.Maximo)
+                if (salario >= a.Minimo && salario <= a.Maximo)
                 {
                     alicota = a.Alicota;
                     deducao = a.Deduzir;
-                    descontar = CalculeteDiscountService.CalculeteIrpf(alicota, deducao, salary);
+                    descontar = CalculeteDiscountService.CalculeteIrpf(alicota, deducao, salario);
                     break;
                 }
             }

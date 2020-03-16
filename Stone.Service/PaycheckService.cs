@@ -29,7 +29,7 @@ namespace Stone.Service
             var paySlip = new Paymentslip()
             {
                 Lancamentos = descontos,
-                TotalDesconto = GetDiscount(descontos),
+                TotalDesconto = GetDesconto(descontos),
 
                 Employee = new EmployeeDTO()
                 {
@@ -42,88 +42,88 @@ namespace Stone.Service
                 }
             };
 
-            paySlip.Referencia = MonthService.GetMonth(new DateTime().Month);
-            paySlip.SalarioLiquido = GetNetPay(paySlip.Employee.SalarioBruto, paySlip.TotalDesconto);
+            paySlip.Referencia = MonthService.GetMes(new DateTime().Month);
+            paySlip.SalarioLiquido = GetSalarioLiquido(paySlip.Employee.SalarioBruto, paySlip.TotalDesconto);
 
             return paySlip;
         }
 
         public void GetDescontos(List<Discount> descontos)
         {
-            addDescontosInss(descontos);
-            addDiscountIrpf(descontos);
-            addDiscountHealthPlan(descontos);
-            addDiscountDentalPlan(descontos);
-            addDiscountTransport(descontos);
-            addDiscountFgts(descontos);
+            addDescontoInss(descontos);
+            addDescontoIrpf(descontos);
+            addDescontoPlanoDeSaude(descontos);
+            addDescontoPlanoDental(descontos);
+            addDescontoTransporte(descontos);
+            addDescontoFgts(descontos);
         }
 
-        public void addDescontosInss(List<Discount> descontos)
+        public void addDescontoInss(List<Discount> descontos)
         {
             descontos.Add(_inssRepository.GetDesconto(_funcionario.SalarioBruto));
         }
 
-        public void addDiscountIrpf(List<Discount> discounts)
+        public void addDescontoIrpf(List<Discount> desconto)
         {
-            discounts.Add(_iprfRepository.GetDesconto(_funcionario.SalarioBruto));
+            desconto.Add(_iprfRepository.GetDesconto(_funcionario.SalarioBruto));
         }
 
-        public void addDiscountHealthPlan(List<Discount> discounts)
+        public void addDescontoPlanoDeSaude(List<Discount> descontos)
         {
             var planoDeSaude = new Discount()
             {
                 TipoDeDesconto = "Plano de Saúde",
                 ValorDesconto = _funcionario.PlanoSaude ? 10 : 0
             };
-            discounts.Add(planoDeSaude);
+            descontos.Add(planoDeSaude);
         }
 
-        public void addDiscountDentalPlan(List<Discount> discounts)
+        public void addDescontoPlanoDental(List<Discount> descontos)
         {
             var dental = new Discount()
             {
                 TipoDeDesconto = "Plano de Dental",
                 ValorDesconto = _funcionario.PlanoSaude ? 5 : 0,
             };
-            discounts.Add(dental);
+            descontos.Add(dental);
         }
 
-        public void addDiscountTransport(List<Discount> discounts)
+        public void addDescontoTransporte(List<Discount> descontos)
         {
             var transporte = new Discount()
             {
                 TipoDeDesconto = "Transporte",
                 ValorDesconto = _funcionario.ValeTransporte ?
-                    CalculeteDiscountService.CacluleTransport(_funcionario.SalarioBruto) : 0
+                    CalculeteDiscountService.CalcularTransporte(_funcionario.SalarioBruto) : 0
             };
-            discounts.Add(transporte);
+            descontos.Add(transporte);
         }
 
-        public void addDiscountFgts(List<Discount> discounts)
+        public void addDescontoFgts(List<Discount> discounts)
         {
             var fgts
                 = new Discount()
                 {
                     TipoDeDesconto = "FGTS",
-                    ValorDesconto = CalculeteDiscountService.CacluleFGTS(_funcionario.SalarioBruto)
+                    ValorDesconto = CalculeteDiscountService.CalcularFgts(_funcionario.SalarioBruto)
 
                 };
             discounts.Add(fgts);
         }
 
-        public decimal GetDiscount(List<Discount> discounts)
+        public decimal GetDesconto(List<Discount> descontos)
         {
             decimal sum = 0;
-            foreach (var desconto in discounts)
+            foreach (var desconto in descontos)
             {
                 sum += desconto.ValorDesconto;
             }
             return Decimal.Round((sum * -1), 2);
         }
 
-        public decimal GetNetPay(decimal salary, decimal discount)
+        public decimal GetSalarioLiquido(decimal salario, decimal desconto)
         {
-            decimal netPay = salary + discount;
+            decimal netPay = salario + desconto;
 
             return Decimal.Round(netPay, 2);
         }

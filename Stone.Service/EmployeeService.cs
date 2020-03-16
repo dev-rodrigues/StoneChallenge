@@ -16,12 +16,12 @@ namespace Stone.Service
         {            
         }
 
-        public Employee AddEmployee(Employee employee)
+        public Employee AddFuncionario(Employee funcionario)
         {
-            return _servico.Criar(employee);
+            return _servico.Criar(funcionario);
         }
 
-        public Employee GetEmployeeById(int id)
+        public Employee GetFuncionarioPorId(int id)
         {
             return _servico.Ler(id);
         }

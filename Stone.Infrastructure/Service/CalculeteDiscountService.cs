@@ -6,54 +6,44 @@ namespace Stone.Service
 {
     public class CalculeteDiscountService
     {
-        private static decimal VALOR_MINIMO = 1500.00m;
+        private const decimal SALARIO_MINIMO_PARA_TRANSPORTE = 1500.00m;
 
         public static decimal CalculeteIrpf(decimal alicota, decimal deducion, decimal salary)
-        {
-
-            decimal imposto = 0;
-
+        {            
             // contribuinte nao paga imposto
             if (alicota == 0 && deducion == 0)
             {
-                return imposto;
+                return (decimal)0.0;
             }
 
-            imposto = ((alicota / 100) * salary);
+            decimal imposto = ((alicota / 100) * salary);
             imposto = imposto - deducion;
             return Decimal.Round(imposto, 2);
         }
 
-        public static decimal CalculeteInss(decimal alicota, decimal salary)
+        public static decimal CalcularInss(decimal aliquota, decimal salario)
         {
-            decimal imposto = ((alicota / 100) * salary);
+            decimal imposto = ((aliquota / 100) * salario);
             return Decimal.Round(imposto, 2);
         }
 
-        public static decimal CacluleTransport(decimal salary)
+        public static decimal CalcularTransporte(decimal salario)
         {
             decimal desconto = 0;
-            if (salary < VALOR_MINIMO)
+            if (salario < SALARIO_MINIMO_PARA_TRANSPORTE)
             {
-                return desconto;
+                return (decimal)0.0;
             }
 
-            desconto = (decimal)0.06 * salary;
+            desconto = (decimal)0.06 * salario;
 
             return Decimal.Round(desconto, 2);
         }
 
-        public static decimal CacluleFGTS(decimal salary)
+        public static decimal CalcularFgts(decimal salario)
         {
-            decimal desconto = 0;
-            if (salary < VALOR_MINIMO)
-            {
-                return desconto;
-            }
-
-            desconto = (decimal)0.08 * salary;
-
-            return Decimal.Round(desconto, 2);
+            decimal descontoFgts = (decimal)0.08 * salario;
+            return Decimal.Round(descontoFgts, 2);
         }
     }
 }

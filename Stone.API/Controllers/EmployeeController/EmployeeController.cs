@@ -16,12 +16,12 @@ namespace Stone.API.Controllers.EmployeeController
     public class EmployeeController : ControllerBase
     {
 
-        private readonly EmployeeService employeeService = new EmployeeService();
+        private readonly EmployeeService funcionarioService = new EmployeeService();
         
         [HttpGet]
         public IActionResult Show(int employeeId)
         {            
-            return Ok(employeeService.GetEmployeeById(employeeId));
+            return Ok(funcionarioService.GetFuncionarioPorId(employeeId));
         }
 
         [HttpPost]
@@ -35,8 +35,8 @@ namespace Stone.API.Controllers.EmployeeController
                 return BadRequest();
             }
 
-            var saved_employee = employeeService.AddEmployee(employee);
-            return CreatedAtAction(nameof(Show), new { employeeId = saved_employee.Id }, saved_employee);
+            var funcionario_salvo = funcionarioService.AddFuncionario(employee);
+            return CreatedAtAction(nameof(Show), new { employeeId = funcionario_salvo.Id }, funcionario_salvo);
         }
 
     }

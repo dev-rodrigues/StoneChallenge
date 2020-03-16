@@ -8,6 +8,6 @@ namespace Stone.Domain.Entities
     {
         public decimal Minimo { get; set; }
         public decimal Maximo { get; set; }
-        public decimal Alicota { get; set; }
+        public decimal Aliquota { get; set; }
     }
 }

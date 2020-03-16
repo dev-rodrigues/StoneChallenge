@@ -18,38 +18,38 @@ namespace Stone.API.Controllers.EmployeeController
     public class EmployeePaycheckController : ControllerBase
     {
 
-        private readonly EmployeeService employeeService = new EmployeeService();
-        private readonly IDistributedCache _distributedCache;
+        private readonly EmployeeService funcionarioService = new EmployeeService();
+        private readonly IDistributedCache _cacheDistribuido;
 
-        public EmployeePaycheckController(IDistributedCache distributedCache)
+        public EmployeePaycheckController(IDistributedCache cacheDistribuido)
         {
-            _distributedCache = distributedCache;
+            _cacheDistribuido = cacheDistribuido;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Show(int employeeId)
+        public async Task<IActionResult> Show(int funcionario)
         {
-            var cacheKey = employeeId.ToString();
-            string existingKey = String.Empty;
+            var chave = funcionario.ToString();
+            string existeChave = String.Empty;
             try
             {
-                existingKey = await _distributedCache.GetStringAsync(cacheKey);
+                existeChave = await _cacheDistribuido.GetStringAsync(chave);
             }
             catch
             {
-                existingKey = String.Empty;
+                existeChave = String.Empty;
             }
 
             Paymentslip slip;
 
-            if (!string.IsNullOrEmpty(existingKey))
+            if (!string.IsNullOrEmpty(existeChave))
             {
-                return Ok(existingKey);
+                return Ok(existeChave);
             }
             else
             {
                 // busca o usuario
-                var employee = employeeService.GetEmployeeById(employeeId);
+                var employee = funcionarioService.GetFuncionarioPorId(funcionario);
 
                 // cria servico pro usuario
                 var service = new PaycheckService(employee);
@@ -62,7 +62,7 @@ namespace Stone.API.Controllers.EmployeeController
                 {
                     var cacheSettings = new DistributedCacheEntryOptions();
                     cacheSettings.SetAbsoluteExpiration(TimeSpan.FromHours(1));
-                    await _distributedCache.SetStringAsync(cacheKey, JsonConvert.SerializeObject(slip));
+                    await _cacheDistribuido.SetStringAsync(chave, JsonConvert.SerializeObject(slip));
                 }
                 catch
                 {

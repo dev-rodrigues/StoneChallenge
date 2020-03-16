@@ -28,7 +28,7 @@ namespace Stone.Infrastructure.Repositories
             {
                 if (salary >= a.Minimo && salary <= a.Maximo)
                 {
-                    alicota = a.Alicota;
+                    alicota = a.Aliquota;
                     break;
                 }
             }
@@ -38,7 +38,7 @@ namespace Stone.Infrastructure.Repositories
                 TipoDeDesconto = "INSS",
                 Deducao = 0,
                 Aliquota = alicota,
-                ValorDesconto = CalculeteDiscountService.CalculeteInss(alicota, salary)
+                ValorDesconto = CalculeteDiscountService.CalcularInss(alicota, salary)
             };
         }
     }

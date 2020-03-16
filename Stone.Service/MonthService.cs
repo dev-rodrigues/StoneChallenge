@@ -6,7 +6,7 @@ namespace Stone.Service
 {
     public class MonthService
     {
-        public static string GetMonth(int mes)
+        public static string GetMes(int mes)
         {
             string mesReferencia = "";
 
