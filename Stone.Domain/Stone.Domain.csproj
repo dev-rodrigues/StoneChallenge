@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Aggregations\" />
+    <Compile Remove="Aggregations\**" />
+    <EmbeddedResource Remove="Aggregations\**" />
+    <None Remove="Aggregations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Factories\" />
     <Folder Include="Specifications\" />
   </ItemGroup>

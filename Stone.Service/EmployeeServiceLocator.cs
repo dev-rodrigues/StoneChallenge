@@ -25,7 +25,7 @@ namespace Stone.Service
             [typeof(IDiscount)] = typeof(IrpfRepository)
         };
 
-        internal static T GetInstance<T>()
+        public static T GetInstance<T>()
         {
             return Activator.CreateInstance<T>();
         }
