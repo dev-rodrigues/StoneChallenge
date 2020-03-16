@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stone.API", "Stone.API\Ston
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stone.Service", "Stone.Service\Stone.Service.csproj", "{D9E2A198-71BE-475E-88A7-10C594F33B41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stone.Test", "Stone.Test\Stone.Test.csproj", "{E458280F-04FB-41FA-87DF-3A0808845738}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stone.Test", "Stone.Test\Stone.Test.csproj", "{E458280F-04FB-41FA-87DF-3A0808845738}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1275BDD6-F041-4A19-9BD3-3059005013DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{E458280F-04FB-41FA-87DF-3A0808845738}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E458280F-04FB-41FA-87DF-3A0808845738}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E458280F-04FB-41FA-87DF-3A0808845738}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1275BDD6-F041-4A19-9BD3-3059005013DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1275BDD6-F041-4A19-9BD3-3059005013DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1275BDD6-F041-4A19-9BD3-3059005013DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1275BDD6-F041-4A19-9BD3-3059005013DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
