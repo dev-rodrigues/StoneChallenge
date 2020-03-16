@@ -53,13 +53,13 @@ Criar um funcionário
 
 Busca um funcionário
 ```
---request GET \
+--request GET
   --url http://localhost:32769/api/Employee?employeeId={id}
 ```
 
 Buscar contracheque
 ```
---request GET \
+--request GET
   --url http://localhost:32769/api/EmployeePaycheck?employeeId={id}
 ```
 
