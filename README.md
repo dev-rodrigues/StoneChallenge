@@ -32,7 +32,7 @@ As requisições possíveis são:
 
 **POST** http://localhost:8081/api/employee} - Cria um novo funcionário.
 
-**GET** http://localhost:8081/api/Employee?employeeId={id} - Detalha os dados de um funcionário para o id correspondente.
+**GET** http://localhost:8081/api/Employee?funcionario={id} - Detalha os dados de um funcionário para o id correspondente.
 
 **GET** http://localhost:8081/api/EmployeePaycheck?funcionario={id} - Detalha os dados do contracheque de um funcionário para o id correspondente.
 
@@ -57,7 +57,7 @@ Criar um funcionário
 Busca um funcionário
 ```
 --request GET
-  url http://localhost:8081/api/employee?employeeId=1
+  url http://localhost:8081/api/employee?funcionario=1
 ```
 
 Buscar contracheque
