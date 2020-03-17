@@ -14,7 +14,7 @@ namespace Stone.Infrastructure.DataContextLayer
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=tcp:stone-pay-db.database.windows.net,1433;Initial Catalog=stonepay-db;Persist Security Info=False;User ID=carlos;Password=segredo.3#;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            optionsBuilder.UseSqlServer(@"Server=tcp:stonepay-server.database.windows.net,1433;Initial Catalog=stonepaydb;Persist Security Info=False;User ID=stonepay-server;Password=segredo.3#;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -23,6 +23,8 @@ namespace Stone.Infrastructure.DataContextLayer
 
             ConfigureEmployee(modelBuilder);
             ConfigureInss(modelBuilder);
+            //PopulaInss(modelBuilder);
+            //PopulaIrpf(modelBuilder);
         }
 
         private void ConfigureEmployee(ModelBuilder modelBuilder)
@@ -45,7 +47,7 @@ namespace Stone.Infrastructure.DataContextLayer
             modelBuilder.Entity<Inss>(i =>
             {
                 i.ToTable("Irpf");
-            });
+            });               
         }
     }
 }

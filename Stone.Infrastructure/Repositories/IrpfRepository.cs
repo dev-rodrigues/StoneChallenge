@@ -30,7 +30,7 @@ namespace Stone.Infrastructure.Repositories
             {
                 if (salario >= a.Minimo && salario <= a.Maximo)
                 {
-                    alicota = a.Alicota;
+                    alicota = a.Aliquota;
                     deducao = a.Deduzir;
                     descontar = CalculeteDiscountService.CalculeteIrpf(alicota, deducao, salario);
                     break;
