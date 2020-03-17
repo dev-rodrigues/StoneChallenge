@@ -43,7 +43,9 @@ namespace Stone.API.Controllers.EmployeeController
             }
 
             var funcionario_salvo = funcionarioService.AddFuncionario(employee);
-            return CreatedAtAction(nameof(Show), new { employeeId = funcionario_salvo.Id }, funcionario_salvo);
+            return CreatedAtAction(nameof(Show)
+                    , new { employeeId = funcionario_salvo.Id }
+                    , funcionario_salvo);
         }
 
     }

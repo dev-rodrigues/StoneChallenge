@@ -6,6 +6,7 @@ services:
     ports:
       - 6379:6379
   stone.api:
-    image: httpsantos/stoneapi
-    ports:
-      - 80:80
+    image: httpsantos/stonechallenge
+    build:
+      context: .
+      dockerfile: Stone.API/Dockerfile
