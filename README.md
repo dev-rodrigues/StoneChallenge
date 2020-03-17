@@ -1,38 +1,40 @@
 # StoneChalleng
 
-Olá! Esté o StonePayment, um serviço para criar o extrato da folha salarial dos funcionários.
+Olá! Esté o StoneChallenge, um serviço para criar o extrato da folha salarial dos funcionários.
 
 ## Como Rodar
 
-Você pode executar o StonePayment de 2 formas:
+Você pode executar o StoneChallenge de 3 formas:
 
 ### Docker Container
  
-Dê pull na imagem docker
+### 1) Dentro da raiz do projeto, execute:
 ```
-sudo docker pull {IMAGEM}
+docker-compose up
 ```
-Execute-a com o seguinte comando:
+### 2) Dê pull na imagem docker:
 ```
-docker run -p 7000:7000 {IMAGEM}
+docker pull httpsantos/stoneapi
+docker run -p 8081:80 httpsantos/stoneapi
 ```
-
-### IDE 
+### 3) IDE 
 Para esse passo, você precisará ter o Visual Studio instalado em sua máquina.
 Antes de executar, precisamos buildar o projeto:
 ```
  Dentro do diretório do projeto, execute o comando:
  dotnet build
 ```
+Em seguida, clique em Depurar > Iniciar Depuração.
+
 
 ## Como Utilizar
 As requisições possíveis são:
 
-**POST** http://localhost:{}/api/employee} - Cria um novo funcionário.
+**POST** http://localhost:8081/api/employee} - Cria um novo funcionário.
 
-**GET** http://localhost:{}/api/Employee?employeeId={id} - Detalha os dados de um funcionário para o id correspondente.
+**GET** http://localhost:8081/api/Employee?employeeId={id} - Detalha os dados de um funcionário para o id correspondente.
 
-**GET** http://localhost:{}/api/EmployeePaycheck?employeeId={id} - Detalha os dados do contracheque de um funcionário para o id correspondente.
+**GET** http://localhost:8081/api/EmployeePaycheck?funcionario={id} - Detalha os dados do contracheque de um funcionário para o id correspondente.
 
 ### Exemplos de requisições para testar
 
@@ -55,18 +57,18 @@ Criar um funcionário
 Busca um funcionário
 ```
 --request GET
-  url http://localhost:32769/api/Employee?employeeId={id}
+  url http://localhost:8081/api/employee?employeeId=1
 ```
 
 Buscar contracheque
 ```
 --request GET
-  url http://localhost:32769/api/EmployeePaycheck?employeeId={id}
+  url http://localhost:8081/api/EmployeePaycheck?funcionario=1
 ```
 
 ## Testes 
 
-Existem testes cobrindo as principais funcionalidades do StonePayment.
+Existem testes cobrindo as principais funcionalidades do StoneChallenge.
 Para rodar os testes, você pode rodar individualmente pela sua IDE, ou
 com o comando dentro do diretório da aplicação:
 ```
