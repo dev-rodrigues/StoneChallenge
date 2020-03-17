@@ -1,4 +1,4 @@
-# Routiner
+# StoneChalleng
 
 Olá! Esté o StonePayment, um serviço para criar o extrato da folha salarial dos funcionários.
 
