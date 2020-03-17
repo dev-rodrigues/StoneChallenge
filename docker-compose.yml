@@ -8,4 +8,4 @@ services:
   stone.api:
     image: httpsantos/stoneapi
     ports:
-      - 8081:80
+      - 8081:8081
