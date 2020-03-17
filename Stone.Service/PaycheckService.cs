@@ -50,12 +50,15 @@ namespace Stone.Service
 
         public void GetDescontos(List<Discount> descontos)
         {
-            addDescontoInss(descontos);
-            addDescontoIrpf(descontos);
-            addDescontoPlanoDeSaude(descontos);
-            addDescontoPlanoDental(descontos);
-            addDescontoTransporte(descontos);
-            addDescontoFgts(descontos);
+            if(_funcionario != null)
+            {
+                addDescontoInss(descontos);
+                addDescontoIrpf(descontos);
+                addDescontoPlanoDeSaude(descontos);
+                addDescontoPlanoDental(descontos);
+                addDescontoTransporte(descontos);
+                addDescontoFgts(descontos);
+            }
         }
 
         public void addDescontoInss(List<Discount> descontos)

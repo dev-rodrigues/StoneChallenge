@@ -20,8 +20,14 @@ namespace Stone.API.Controllers.EmployeeController
         
         [HttpGet]
         public IActionResult Show(int employeeId)
-        {            
-            return Ok(funcionarioService.GetFuncionarioPorId(employeeId));
+        {
+            Employee funcionario = funcionarioService.GetFuncionarioPorId(employeeId);
+
+            if (funcionario == null)
+            {
+                return NotFound("Funcionario não localizado");
+            }
+            return Ok();
         }
 
         [HttpPost]

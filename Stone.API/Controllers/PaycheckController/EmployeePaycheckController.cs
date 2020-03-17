@@ -51,23 +51,32 @@ namespace Stone.API.Controllers.EmployeeController
                 // busca o usuario
                 var employee = funcionarioService.GetFuncionarioPorId(funcionario);
 
-                // cria servico pro usuario
-                var service = new PaycheckService(employee);
-
-                // gera contracheque
-                slip = service.GetContraCheque();
-
-                // adiciona obj serializado ao redis
-                try
+                
+                if (employee != null)
                 {
-                    var cacheSettings = new DistributedCacheEntryOptions();
-                    cacheSettings.SetAbsoluteExpiration(TimeSpan.FromHours(1));
-                    await _cacheDistribuido.SetStringAsync(chave, JsonConvert.SerializeObject(slip));
-                }
-                catch
+                    // cria servico caso exista funcionario
+                    var service = new PaycheckService(employee);
+
+                    // gera contracheque
+                    slip = service.GetContraCheque();
+
+                    // adiciona obj serializado ao redis
+                    try
+                    {
+                        var cacheSettings = new DistributedCacheEntryOptions();
+
+                        cacheSettings.SetAbsoluteExpiration(TimeSpan.FromHours(1));
+                        await _cacheDistribuido.SetStringAsync(chave, JsonConvert.SerializeObject(slip));
+                    }
+                    catch
+                    {
+                                               
+                    }
+                } else
                 {
-                    Console.WriteLine("nao faz nada");
+                    return NotFound("Funcionario nao localizado");
                 }
+
 
             }
             return Ok(slip);
