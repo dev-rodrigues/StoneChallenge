@@ -5,6 +5,7 @@ using System.Net.Mime;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Stone.Domain.Entities;
 using Stone.Domain.Interface.Repositories;
 using Stone.Service;
@@ -27,7 +28,7 @@ namespace Stone.API.Controllers.EmployeeController
             {
                 return NotFound("Funcionario não localizado");
             }
-            return Ok();
+            return Ok(JsonConvert.SerializeObject(funcionario));
         }
 
         [HttpPost]
