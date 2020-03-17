@@ -6,6 +6,6 @@ services:
     ports:
       - 6379:6379
   stone.api:
-    image: httpsantos/stoneapi
+    image: httpsantos/stonepay
     ports:
       - 8081:80
