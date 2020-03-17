@@ -1,4 +1,4 @@
-version: '3'
+version: '3.4'
 
 services:
   redis:
@@ -6,7 +6,6 @@ services:
     ports:
       - 6379:6379
   stone.api:
-    image: httpsantos/stonechallenge
-    build:
-      context: .
-      dockerfile: Stone.API/Dockerfile
+    image: httpsantos/stoneapi
+    ports:
+      - 8081:80
