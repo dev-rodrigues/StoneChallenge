@@ -14,8 +14,8 @@ docker-compose up
 ```
 ### 2) Dê pull na imagem docker:
 ```
-docker pull httpsantos/stoneapi
-docker run -p 8081:80 httpsantos/stoneapi
+docker pull httpsantos/stonepay
+docker run -p 8081:80 httpsantos/stonepay
 ```
 ### 3) IDE 
 Para esse passo, você precisará ter o Visual Studio instalado em sua máquina.
