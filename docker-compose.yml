@@ -1,11 +1,12 @@
 version: '3.4'
 
 services:
+  stone.api:
+    image: ${DOCKER_REGISTRY-}stoneapi
+    build:
+      context: .
+      dockerfile: Stone.API/Dockerfile
   redis:
     image: redis:alpine
-    ports:
-      - 6379:6379
-  stone.api:
-    image: httpsantos/stoneapi
     ports:
       - 8081:8081

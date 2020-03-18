@@ -20,9 +20,9 @@ namespace Stone.API.Controllers.EmployeeController
         private readonly EmployeeService funcionarioService = new EmployeeService();
         
         [HttpGet]
-        public IActionResult Show(int funcionario)
+        public IActionResult Show(int id)
         {
-            Employee _funcionario = funcionarioService.GetFuncionarioPorId(funcionario);
+            Employee _funcionario = funcionarioService.GetFuncionarioPorId(id);
 
             if (_funcionario == null)
             {
