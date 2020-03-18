@@ -12,9 +12,10 @@ Você pode executar o StoneChallenge de 3 formas:
 ```
 docker-compose up
 ```
-### 2) Dê pull na imagem docker:
+### 2) Imagem disponivel no Dockerhub:
 ```
-docker pull httpsantos/stoneapi
+https://hub.docker.com/r/httpsantos/stoneapi
+Execute:
 docker run -p 8081:80 httpsantos/stoneapi
 ```
 ### 3) IDE 
@@ -30,17 +31,19 @@ Em seguida, clique em Depurar > Iniciar Depuração.
 ## Como Utilizar
 As requisições possíveis são:
 
-**POST** /api/employee - Cria um novo funcionário.
+**POST** http://localhost:8080/api/employee?id=1 - Cria um novo funcionário.
 
-**GET** /api/Employee?id={id} - Detalha os dados de um funcionário para o id correspondente.
+**GET** http://localhost:8080/api/Employee?id={id} - Detalha os dados de um funcionário para o id correspondente.
 
-**GET** /api/EmployeePaycheck?id={id} - Detalha os dados do contracheque de um funcionário para o id correspondente.
+**GET** http://localhost:8080/api/EmployeePaycheck?id={id} - Detalha os dados do contracheque de um funcionário para o id correspondente.
 
 ### Exemplos de requisições para testar
 
 ### Criar um funcionário
 ```
 --request POST
+  http://localhost:8080/api/employee
+  https://stoneapi.azurewebsites.net/api/employee
   {
     "nome": "fake",
     "sobreNome": "fake",
@@ -58,12 +61,14 @@ As requisições possíveis são:
 ```
 --request GET
   url http://localhost:8081/api/employee?funcionario=1
+  https://stoneapi.azurewebsites.net/api/employee?id=1
 ```
 
 ### Buscar contracheque
 ```
 --request GET
-  url http://localhost:8081/api/EmployeePaycheck?funcionario=1
+  http://localhost:8081/api/EmployeePaycheck?id=1
+  https://stoneapi.azurewebsites.net/api/EmployeePaycheck?id=1
 ```
 
 ### Testes 
