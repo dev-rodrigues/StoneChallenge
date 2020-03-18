@@ -30,11 +30,11 @@ Em seguida, clique em Depurar > Iniciar Depuração.
 ## Como Utilizar
 As requisições possíveis são:
 
-**POST** /api/employee} - Cria um novo funcionário.
+**POST** /api/employee - Cria um novo funcionário.
 
-**GET** /api/Employee?funcionario={id} - Detalha os dados de um funcionário para o id correspondente.
+**GET** /api/Employee?id={id} - Detalha os dados de um funcionário para o id correspondente.
 
-**GET** /api/EmployeePaycheck?funcionario={id} - Detalha os dados do contracheque de um funcionário para o id correspondente.
+**GET** /api/EmployeePaycheck?id={id} - Detalha os dados do contracheque de um funcionário para o id correspondente.
 
 ### Exemplos de requisições para testar
 
