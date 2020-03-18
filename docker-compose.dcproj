@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>fc0fb906-137b-4f08-9d2e-d74641d8fd4f</ProjectGuid>
+    <ProjectGuid>3a0272e8-7083-43f2-8ab6-36c44864d9ee</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
     <DockerServiceName>stone.api</DockerServiceName>

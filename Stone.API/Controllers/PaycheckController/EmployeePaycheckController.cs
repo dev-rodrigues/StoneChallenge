@@ -27,9 +27,9 @@ namespace Stone.API.Controllers.EmployeeController
         }
 
         [HttpGet]
-        public async Task<IActionResult> Show(int funcionario)
+        public async Task<IActionResult> Show(int id)
         {
-            var chave = funcionario.ToString();
+            var chave = id.ToString();
             string existeChave = String.Empty;
             try
             {
@@ -49,7 +49,7 @@ namespace Stone.API.Controllers.EmployeeController
             else
             {
                 // busca o usuario
-                var employee = funcionarioService.GetFuncionarioPorId(funcionario);
+                var employee = funcionarioService.GetFuncionarioPorId(id);
 
                 
                 if (employee != null)

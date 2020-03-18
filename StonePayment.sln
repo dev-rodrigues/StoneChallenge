@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stone.Service", "Stone.Serv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stone.Test", "Stone.Test\Stone.Test.csproj", "{E458280F-04FB-41FA-87DF-3A0808845738}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FC0FB906-137B-4F08-9D2E-D74641D8FD4F}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3A0272E8-7083-43F2-8AB6-36C44864D9EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,10 +49,10 @@ Global
 		{E458280F-04FB-41FA-87DF-3A0808845738}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E458280F-04FB-41FA-87DF-3A0808845738}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E458280F-04FB-41FA-87DF-3A0808845738}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC0FB906-137B-4F08-9D2E-D74641D8FD4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC0FB906-137B-4F08-9D2E-D74641D8FD4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC0FB906-137B-4F08-9D2E-D74641D8FD4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC0FB906-137B-4F08-9D2E-D74641D8FD4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A0272E8-7083-43F2-8AB6-36C44864D9EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A0272E8-7083-43F2-8AB6-36C44864D9EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A0272E8-7083-43F2-8AB6-36C44864D9EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A0272E8-7083-43F2-8AB6-36C44864D9EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
