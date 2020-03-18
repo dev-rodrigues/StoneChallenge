@@ -31,7 +31,7 @@ Em seguida, clique em Depurar > Iniciar Depuração.
 ## Como Utilizar
 As requisições possíveis são:
 
-**POST** http://localhost:8080/api/employee?id=1 - Cria um novo funcionário.
+**POST** http://localhost:8080/api/employee - Cria um novo funcionário.
 
 **GET** http://localhost:8080/api/Employee?id={id} - Detalha os dados de um funcionário para o id correspondente.
 
