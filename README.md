@@ -30,15 +30,15 @@ Em seguida, clique em Depurar > Iniciar Depuração.
 ## Como Utilizar
 As requisições possíveis são:
 
-**POST** http://localhost:8081/api/employee} - Cria um novo funcionário.
+**POST** /api/employee} - Cria um novo funcionário.
 
-**GET** http://localhost:8081/api/Employee?funcionario={id} - Detalha os dados de um funcionário para o id correspondente.
+**GET** /api/Employee?funcionario={id} - Detalha os dados de um funcionário para o id correspondente.
 
-**GET** http://localhost:8081/api/EmployeePaycheck?funcionario={id} - Detalha os dados do contracheque de um funcionário para o id correspondente.
+**GET** /api/EmployeePaycheck?funcionario={id} - Detalha os dados do contracheque de um funcionário para o id correspondente.
 
 ### Exemplos de requisições para testar
 
-Criar um funcionário
+### Criar um funcionário
 ```
 --request POST
   {
@@ -54,19 +54,19 @@ Criar um funcionário
   }
 ```
 
-Busca um funcionário
+### Busca um funcionário
 ```
 --request GET
   url http://localhost:8081/api/employee?funcionario=1
 ```
 
-Buscar contracheque
+### Buscar contracheque
 ```
 --request GET
   url http://localhost:8081/api/EmployeePaycheck?funcionario=1
 ```
 
-## Testes 
+### Testes 
 
 Existem testes cobrindo as principais funcionalidades do StoneChallenge.
 Para rodar os testes, você pode rodar individualmente pela sua IDE, ou
