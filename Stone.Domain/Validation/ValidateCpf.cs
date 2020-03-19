@@ -8,6 +8,14 @@ namespace Stone.Domain.Validation
     public class ValidateCpf : ValidationAttribute
     {
         
+        /// <summary>
+        /// Responsável por validar o cpf do usuário
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>
+        /// true => cpf valido
+        /// false => cpf inválido
+        /// </returns>
         public override bool IsValid(object value)
         {
             string cpf = value.ToString();

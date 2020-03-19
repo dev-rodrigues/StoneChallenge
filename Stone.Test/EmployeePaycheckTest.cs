@@ -50,16 +50,8 @@ namespace Stone.Test
         public void Deve_VerificarIRPF_ZeradoDoFuncionario_QuandoGerar_ContraCheque()
         {
             var paycheck = GeraContraChequeFuncionarioPobre();
-            var irpf = paycheck.Lancamentos.Find(x => x.TipoDeDesconto.Equals("INSS"));
+            var irpf = paycheck.Lancamentos.Find(x => x.TipoDeDesconto.Equals("IRPF"));
             Assert.AreEqual(irpf.ValorDesconto, 0);
-        }
-
-        [TestMethod]
-        public void Deve_VerificarAlicota_ZeradaDoFuncionario_QuandoGerar_ContraCheque()
-        {
-            var paycheck = GeraContraChequeFuncionarioPobre();
-            var irpf = paycheck.Lancamentos.Find(x => x.TipoDeDesconto.Equals("INSS"));
-            Assert.AreEqual(irpf.Aliquota, 0);
         }
 
         [TestMethod]
@@ -120,7 +112,7 @@ namespace Stone.Test
                 SobreNome = "fake",
                 Cpf = "275.925.310-46",
                 Admissao = DateTime.Now,
-                SalarioBruto = (decimal)1903.99,
+                SalarioBruto = (decimal)1045.00,
                 Setor = "TI",
             };
         }

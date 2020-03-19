@@ -18,7 +18,14 @@ namespace Stone.API.Controllers.EmployeeController
     {
 
         private readonly EmployeeService funcionarioService = new EmployeeService();
-        
+
+        /// <summary>
+        /// Endpoint responsável por apresentar os dados do usuario
+        /// </summary>
+        /// <param name="id">
+        /// /api/employee?id=1
+        /// </param>
+        /// <returns>Objeto do tipo Employee</returns>
         [HttpGet]
         public IActionResult Show(int id)
         {
@@ -31,6 +38,13 @@ namespace Stone.API.Controllers.EmployeeController
             return Ok(JsonConvert.SerializeObject(_funcionario));
         }
 
+        /// <summary>
+        ///  Endpoint responsável por persistir os dados do usuário.
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns>
+        /// Employee
+        /// </returns>
         [HttpPost]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status201Created)]

@@ -15,6 +15,7 @@ namespace Stone.API
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -32,7 +33,7 @@ namespace Stone.API
                 option.Configuration = "127.0.0.1:6379";
                 option.InstanceName = "master";                
             });
-        }
+        }        
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
