@@ -60,14 +60,14 @@ As requisições possíveis são:
 ### Busca um funcionário
 ```
 --request GET
-  url http://localhost:8081/api/employee?funcionario=1
+  url http://localhost:8080/api/employee?funcionario=1
   https://stoneapi.azurewebsites.net/api/employee?id=1
 ```
 
 ### Buscar contracheque
 ```
 --request GET
-  http://localhost:8081/api/EmployeePaycheck?id=1
+  http://localhost:8080/api/EmployeePaycheck?id=1
   https://stoneapi.azurewebsites.net/api/EmployeePaycheck?id=1
 ```
 
