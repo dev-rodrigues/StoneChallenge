@@ -16,7 +16,7 @@ docker-compose up
 ```
 https://hub.docker.com/r/httpsantos/stoneapi
 Execute:
-docker run -p 8081:80 httpsantos/stoneapi
+docker run -p 8080:80 httpsantos/stoneapi
 ```
 ### 3) IDE 
 Para esse passo, você precisará ter o Visual Studio instalado em sua máquina.
