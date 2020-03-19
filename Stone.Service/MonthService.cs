@@ -6,6 +6,13 @@ namespace Stone.Service
 {
     public class MonthService
     {
+        /// <summary>
+        /// Responsável por retornar a string do mês respectivo
+        /// </summary>
+        /// <param name="mes"></param>
+        /// <returns>
+        /// string do mês de referencia
+        /// </returns>
         public static string GetMes(int mes)
         {
             string mesReferencia = "";

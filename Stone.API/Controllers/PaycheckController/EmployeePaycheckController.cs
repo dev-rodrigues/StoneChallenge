@@ -26,6 +26,17 @@ namespace Stone.API.Controllers.EmployeeController
             _cacheDistribuido = cacheDistribuido;
         }
 
+
+        /// <summary>
+        /// Endpoint responsável por apresentar os dados do usuario,
+        /// O mesmo verifica a existência do id dentro do Redis
+        /// Caso a chave exista, retornar o objeto encontrado.
+        /// Do contrario, realizar o processamento do contracheque 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>
+        /// Paymentslip
+        /// </returns>
         [HttpGet]
         public async Task<IActionResult> Show(int id)
         {
@@ -38,6 +49,7 @@ namespace Stone.API.Controllers.EmployeeController
             catch
             {
                 existeChave = String.Empty;
+                // logger
             }
 
             Paymentslip slip;

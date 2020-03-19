@@ -16,11 +16,25 @@ namespace Stone.Service
         {            
         }
 
+        /// <summary>
+        /// Responsável por persistir um funcionário
+        /// </summary>
+        /// <param name="funcionario"></param>
+        /// <returns>
+        /// Funcionário persistido
+        /// </returns>
         public Employee AddFuncionario(Employee funcionario)
         {
             return _servico.Criar(funcionario);
         }
 
+        /// <summary>
+        /// Responsável por buscar um funcionário por id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>
+        /// Employee
+        /// </returns>
         public Employee GetFuncionarioPorId(int id)
         {
             return _servico.Ler(id);

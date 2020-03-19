@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Stone.API</name>
+    </assembly>
+    <members>
+        <member name="M:Stone.API.Controllers.EmployeeController.EmployeeController.Show(System.Int32)">
+            <summary>
+            Endpoint responsável por apresentar os dados do usuario
+            </summary>
+            <param name="id">
+            /api/employee?id=1
+            </param>
+            <returns>Objeto do tipo Employee</returns>
+        </member>
+        <member name="M:Stone.API.Controllers.EmployeeController.EmployeeController.Store(Stone.Domain.Entities.Employee)">
+            <summary>
+             Endpoint responsável por persistir os dados do usuário.
+            </summary>
+            <param name="employee"></param>
+            <returns>
+            Employee
+            </returns>
+        </member>
+        <member name="M:Stone.API.Controllers.EmployeeController.EmployeePaycheckController.Show(System.Int32)">
+            <summary>
+            Endpoint responsável por apresentar os dados do usuario,
+            O mesmo verifica a existência do id dentro do Redis
+            Caso a chave exista, retornar o objeto encontrado.
+            Do contrario, realizar o processamento do contracheque 
+            </summary>
+            <param name="id"></param>
+            <returns>
+            Paymentslip
+            </returns>
+        </member>
+    </members>
+</doc>

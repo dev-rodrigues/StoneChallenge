@@ -21,6 +21,12 @@ namespace Stone.Service
             _funcionario = funcionario;
         }
 
+        /// <summary>
+        /// Calcular os descontos do usuário
+        /// </summary>
+        /// <returns>
+        /// Objeto PaySlip
+        /// </returns>
         public Paymentslip GetContraCheque()
         {
             var descontos = new List<Discount>();
@@ -48,6 +54,10 @@ namespace Stone.Service
             return paySlip;
         }
 
+        /// <summary>
+        /// Chama os métodos responsáveis por calcular os descontos do usuário
+        /// </summary>
+        /// <param name="descontos"></param>
         public void GetDescontos(List<Discount> descontos)
         {
             if(_funcionario != null)
@@ -61,16 +71,28 @@ namespace Stone.Service
             }
         }
 
+        /// <summary>
+        /// Calcular os descontos de inss
+        /// </summary>
+        /// <param name="descontos"></param>
         public void addDescontoInss(List<Discount> descontos)
         {
             descontos.Add(_inssRepository.GetDesconto(_funcionario.SalarioBruto));
         }
 
+        /// <summary>
+        /// Calcular o desconto de irpf
+        /// </summary>
+        /// <param name="desconto"></param>
         public void addDescontoIrpf(List<Discount> desconto)
         {
             desconto.Add(_iprfRepository.GetDesconto(_funcionario.SalarioBruto));
         }
 
+        /// <summary>
+        /// Calcular o desconto de plano de saude
+        /// </summary>
+        /// <param name="descontos"></param>
         public void addDescontoPlanoDeSaude(List<Discount> descontos)
         {
             var planoDeSaude = new Discount()
@@ -81,6 +103,10 @@ namespace Stone.Service
             descontos.Add(planoDeSaude);
         }
 
+        /// <summary>
+        /// Calcular o desconto de plano dental
+        /// </summary>
+        /// <param name="descontos"></param>
         public void addDescontoPlanoDental(List<Discount> descontos)
         {
             var dental = new Discount()
@@ -91,6 +117,10 @@ namespace Stone.Service
             descontos.Add(dental);
         }
 
+        /// <summary>
+        /// Calcular o desconto de transporte
+        /// </summary>
+        /// <param name="descontos"></param>
         public void addDescontoTransporte(List<Discount> descontos)
         {
             var transporte = new Discount()
@@ -102,6 +132,10 @@ namespace Stone.Service
             descontos.Add(transporte);
         }
 
+        /// <summary>
+        /// Calcular o desconto de fgts
+        /// </summary>
+        /// <param name="discounts"></param>
         public void addDescontoFgts(List<Discount> discounts)
         {
             var fgts
@@ -114,6 +148,11 @@ namespace Stone.Service
             discounts.Add(fgts);
         }
 
+        /// <summary>
+        /// Calcular todos os descontos do usuário
+        /// </summary>
+        /// <param name="descontos"></param>
+        /// <returns></returns>
         public decimal GetDesconto(List<Discount> descontos)
         {
             decimal sum = 0;
@@ -124,6 +163,12 @@ namespace Stone.Service
             return Decimal.Round((sum * -1), 2);
         }
 
+        /// <summary>
+        /// Calcular o salário liquido
+        /// </summary>
+        /// <param name="salario"></param>
+        /// <param name="desconto"></param>
+        /// <returns></returns>
         public decimal GetSalarioLiquido(decimal salario, decimal desconto)
         {
             decimal netPay = salario + desconto;
