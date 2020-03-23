@@ -9,7 +9,7 @@ namespace Stone.Infrastructure.DataContextLayer
     public class EFDataContext : DbContext
     {
         private const string LOCAL_DB = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        private const string PRD_DB = @"Server=tcp:stoneserver.database.windows.net,1433;Initial Catalog=stone_db;Persist Security Info=False;User ID=stoneserver;Password=segredo.3#;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        private const string PRD_DB = @"Server=tcp:stoneserver.database.windows.net,1433;Initial Catalog=stonedb;Persist Security Info=False;User ID=stoneserver;Password=segredo.3#;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Inss> Inss { get; set; }
